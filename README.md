@@ -1,53 +1,89 @@
 # FerCueAstro
 
-Portafolio web construido con Astro y Tailwind CSS, diseñado como hub interactivo de secciones. El proyecto prioriza rendimiento, claridad visual y mantenimiento sencillo desde una fuente de datos central.
+Portafolio web construido con `Astro` y `Tailwind CSS`, planteado como un hub visual por secciones. El objetivo del proyecto es mostrar servicios, experiencia, tecnologías, certificados y vías de contacto de una forma clara, rápida y fácil de mantener.
 
-## Qué incluye
+## Índice
 
-- Navegación tipo hub con paneles dinámicos
-- Secciones organizadas por dominio: Perfil, Proyectos, Servicios, Tecnologías, Certificados y Contacto
-- Diseño responsive con foco en mobile
-- Transiciones visuales con fallback para dispositivos pequeños y usuarios con reduced motion
-- Contenido centralizado en un único archivo de datos
+- [FerCueAstro](#fercueastro)
+  - [Índice](#índice)
+  - [1. Descripción general](#1-descripción-general)
+  - [2. Qué incluye](#2-qué-incluye)
+  - [3. Stack tecnológico](#3-stack-tecnológico)
+  - [4. Requisitos previos](#4-requisitos-previos)
+  - [5. Puesta en marcha](#5-puesta-en-marcha)
+    - [5.1 Instalar dependencias](#51-instalar-dependencias)
+    - [5.2 Levantar el entorno de desarrollo](#52-levantar-el-entorno-de-desarrollo)
+    - [5.3 Generar build y previsualizar](#53-generar-build-y-previsualizar)
+  - [6. Scripts disponibles](#6-scripts-disponibles)
+  - [7. Estructura del proyecto](#7-estructura-del-proyecto)
+  - [8. Comportamiento UX actual](#8-comportamiento-ux-actual)
+  - [9. Despliegue](#9-despliegue)
+  - [10. Documentación adicional](#10-documentación-adicional)
+  - [11. Notas útiles](#11-notas-útiles)
 
-## Stack
+## 1. Descripción general
+
+`FerCueAstro` es un portfolio estático orientado a presentar trabajo profesional y servicios digitales con una estructura limpia y visual. Todo el contenido principal se gestiona desde una fuente de datos central para facilitar actualizaciones rápidas.
+
+## 2. Qué incluye
+
+- Navegación tipo hub con paneles dinámicos.
+- Secciones organizadas por dominio: perfil, proyectos, servicios, tecnologías, certificados y contacto.
+- Diseño responsive con prioridad mobile-first.
+- Transiciones visuales con fallback para dispositivos pequeños o usuarios con `reduced motion`.
+- Contenido editable desde un único archivo de datos.
+
+## 3. Stack tecnológico
 
 | Herramienta | Versión |
 | --- | --- |
-| Astro | 6.1.1 |
-| Tailwind CSS | 4.2.2 |
-| TypeScript | Incluido vía Astro |
+| `Astro` | `6.1.1` |
+| `Tailwind CSS` | `4.2.2` |
+| `TypeScript` | Integrado vía Astro |
 
-## Requisitos
+## 4. Requisitos previos
 
-- Node.js >= 22.12.0
-- npm
+Antes de arrancar el proyecto, necesitas tener instalado:
 
-## Inicio rápido
+- `Node.js >= 22.12.0`
+- `npm`
+
+## 5. Puesta en marcha
+
+### 5.1 Instalar dependencias
 
 ```bash
 npm install
+```
+
+### 5.2 Levantar el entorno de desarrollo
+
+```bash
 npm run dev
 ```
 
-Aplicación local en http://localhost:4321
+La aplicación queda disponible en:
 
-## Build y preview
+```text
+http://localhost:4321
+```
+
+### 5.3 Generar build y previsualizar
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Scripts
+## 6. Scripts disponibles
 
 | Script | Descripción |
 | --- | --- |
-| npm run dev | Levanta entorno de desarrollo |
-| npm run build | Genera salida estática en dist |
-| npm run preview | Sirve localmente la build de dist |
+| `npm run dev` | Inicia el entorno de desarrollo |
+| `npm run build` | Genera la versión estática en `dist/` |
+| `npm run preview` | Sirve localmente la build generada |
 
-## Estructura principal
+## 7. Estructura del proyecto
 
 ```text
 src/
@@ -69,61 +105,37 @@ src/
   utils/viewTransitions.ts
 ```
 
-## Personalización
+## 8. Comportamiento UX actual
 
-### 1) Editar contenido
+- Menú principal con acceso a paneles mediante botones.
+- Botón de vuelta al menú dentro del área de contenido.
+- Certificados mostrados en carrusel horizontal en móvil y en grid en pantallas mayores.
+- Accesos rápidos desde la sección de perfil conectados al sistema de paneles.
 
-Toda la información editable está en src/data/portfolio.ts:
+## 9. Despliegue
 
-- profile
-- navigationLinks y hubSections
-- projects
-- services
-- skillGroups
-- certificates
-- contactLinks
+Es un proyecto estático apto para plataformas como:
 
-### 2) Ajustar estilo visual
+- `Netlify`
+- `Vercel`
+- `GitHub Pages`
+- Hosting tradicional
 
-Variables de tema global en src/styles/global.css dentro de @theme:
+Configuración base de despliegue:
 
-- --color-ink
-- --color-violet-deep
-- --color-gold-main
-- --color-paper
+- **Comando de build:** `npm run build`
+- **Carpeta de publicación:** `dist`
 
-### 3) Añadir nueva sección al menú
+## 10. Documentación adicional
 
-1. Crear componente de sección en src/components/sections/
-2. Agregar entrada en hubSections en src/data/portfolio.ts
-3. Importar y renderizar el panel en PortfolioHub.astro
+- `ARCHITECTURE_GUIDE.md`
+- `src/components/ARCHITECTURE.md`
 
-## Comportamiento UX actual
+## 11. Notas útiles
 
-- Menú principal con acceso a paneles por botones
-- Botón Volver al menú dentro del stage de contenido
-- Certificados en carrusel horizontal en mobile y grid en tablet/desktop
-- Botones de acceso rápido desde Perfil conectados al sistema de paneles
-
-## Despliegue
-
-Proyecto estático apto para Netlify, Vercel, GitHub Pages u hosting tradicional.
-
-Configuración base:
-
-- Comando de build: npm run build
-- Carpeta de publicación: dist
-
-## Documentación adicional
-
-- ARCHITECTURE_GUIDE.md
-- src/components/ARCHITECTURE.md
-
-## Notas
-
-- Si solo necesitas actualizar textos, no hace falta tocar componentes: modifica src/data/portfolio.ts
-- Para cambios de interacción entre paneles, revisar src/utils/viewTransitions.ts y src/components/front/PortfolioHub.astro
+- Si solo necesitas cambiar textos o enlaces, normalmente basta con editar `src/data/portfolio.ts`.
+- Para tocar interacciones o navegación del hub, revisa `src/utils/viewTransitions.ts` y `src/components/front/PortfolioHub.astro`.
 
 ---
 
-Última actualización: 28 de marzo de 2026
+**Última actualización:** 9 de abril de 2026
