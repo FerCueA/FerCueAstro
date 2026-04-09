@@ -44,15 +44,21 @@ import SectionIntro from '../ui/SectionIntro.astro';
 						<span class="rounded-full border border-violet-main/18 bg-violet-soft/35 px-3 py-1 text-sm text-violet-deep">{item}</span>
 					))}
 				</div>
-				<div class="mt-6 flex gap-3">
-					<a
-						href={project.liveUrl}
-						target="_blank"
-						rel="noreferrer"
-						class="rounded-full bg-gold-main px-4 py-2 text-sm font-semibold text-ink transition hover:bg-gold-soft"
-					>
-						Ver proyecto
-					</a>
+				<div class="mt-6 flex flex-wrap items-center gap-3">
+					{project.liveUrl ? (
+						<a
+							href={project.liveUrl}
+							target="_blank"
+							rel="noreferrer"
+							class="rounded-full bg-gold-main px-4 py-2 text-sm font-semibold text-ink transition hover:bg-gold-soft"
+						>
+							Ver proyecto
+						</a>
+					) : (
+						<span class="rounded-full border border-amber-500/25 bg-amber-500/10 px-4 py-2 text-sm font-medium text-amber-800">
+							No dispone de página web pública
+						</span>
+					)}
 					<a
 						href={project.repoUrl}
 						target="_blank"

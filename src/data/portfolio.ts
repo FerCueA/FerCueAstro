@@ -5,7 +5,7 @@ export interface Project {
 	outcome: string;
 	stack: string[];
 	status: string;
-	liveUrl: string;
+	liveUrl?: string;
 	repoUrl: string;
 }
 
@@ -57,7 +57,7 @@ export const navigationLinks = [
 export const hubSections = [{ id: 'perfil', label: 'Perfil' }, ...navigationLinks.map((link) => ({ id: link.href.replace('#', ''), label: link.label }))];
 
 export const heroStats = [
-	{ value: '2', label: 'Proyectos publicados con demo y repositorio' },
+	{ value: '4', label: 'Proyectos reales mostrados en el portfolio' },
 	{ value: '4', label: 'Servicios listos para contratar' },
 	{ value: '5', label: 'Canales de contacto y presencia profesional' },
 ];
@@ -84,6 +84,29 @@ export const projects: Project[] = [
 		status: 'Activo',
 		liveUrl: 'https://duitapp.koyeb.app/',
 		repoUrl: 'https://github.com/FerCueA/Duit',
+	},
+	{
+		title: 'Juan González',
+		category: 'Landing page musical',
+		description:
+			'Landing desarrollada con Angular para presentar la propuesta musical de Juan González, reforzar su identidad visual jazz/blues y facilitar reservas por contacto directo.',
+		outcome:
+			'Resultado: presencia online más cuidada, estética coherente con la marca artística y canal de contratación más visible.',
+		stack: ['Angular', 'Tailwind CSS', 'TypeScript', 'SSR'],
+		status: 'Publicado',
+		liveUrl: 'https://juangzsz.netlify.app/',
+		repoUrl: 'https://github.com/FerCueA/JuanGzSz',
+	},
+	{
+		title: 'RedmineApp',
+		category: 'Customización Redmine',
+		description:
+			'Entorno de trabajo sobre Redmine para modificar el tema e instalar plugins que aporten valor real al equipo, incluyendo automatizaciones ETL y mejoras de accesibilidad, UI y UX.',
+		outcome:
+			'Resultado: base reproducible para validar cambios funcionales y visuales en Redmine con foco en usabilidad y mantenimiento.',
+		stack: ['Ruby', 'Redmine', 'MySQL', 'Docker'],
+		status: 'En desarrollo',
+		repoUrl: 'https://github.com/FerCueA/RedmineApp',
 	},
 ];
 
@@ -125,7 +148,7 @@ export const skillGroups: SkillGroup[] = [
 		title: 'Tecnologías',
 		icon: 'code',
 		description: 'Herramientas con las que construyo interfaces rápidas, webs bien presentadas y soluciones funcionales para negocio o producto.',
-		items: ['HTML', 'CSS', 'JavaScript', 'Astro', 'Tailwind CSS', 'Spring Boot', 'Bootstrap', 'MVC'],
+		items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Astro', 'Angular', 'Tailwind CSS', 'Spring Boot', 'Bootstrap', 'Ruby', 'MVC'],
 	},
 	{
 		title: 'Plataformas',
@@ -143,7 +166,7 @@ export const skillGroups: SkillGroup[] = [
 		title: 'Software',
 		icon: 'tool',
 		description: 'Software técnico que uso para programar, gestionar datos y trabajar mejor el desarrollo del día a día.',
-		items: ['Visual Studio Code', 'DBeaver', 'Pentaho'],
+		items: ['Visual Studio Code', 'DBeaver', 'Pentaho', 'Docker', 'Redmine'],
 	},
 ];
 
