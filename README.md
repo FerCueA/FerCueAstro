@@ -1,83 +1,61 @@
-# FerCueAstro
+# 👋 FerCueAstro
 
-Portafolio web construido con `Astro` y `Tailwind CSS`, planteado como un hub visual por secciones. El objetivo del proyecto es mostrar servicios, experiencia, tecnologías, certificados y vías de contacto de una forma clara, rápida y fácil de mantener.
+**Portafolio personal de Aleixo Fernández Cuevas** — desarrollador full stack y de automatización.
 
-## Índice
+[![Astro](https://img.shields.io/badge/Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com)
 
-- [FerCueAstro](#fercueastro)
-  - [Índice](#índice)
-  - [1. Descripción general](#1-descripción-general)
-  - [2. Qué incluye](#2-qué-incluye)
-  - [3. Stack tecnológico](#3-stack-tecnológico)
-  - [4. Requisitos previos](#4-requisitos-previos)
-  - [5. Puesta en marcha](#5-puesta-en-marcha)
-    - [5.1 Instalar dependencias](#51-instalar-dependencias)
-    - [5.2 Levantar el entorno de desarrollo](#52-levantar-el-entorno-de-desarrollo)
-    - [5.3 Generar build y previsualizar](#53-generar-build-y-previsualizar)
-  - [6. Scripts disponibles](#6-scripts-disponibles)
-  - [7. Estructura del proyecto](#7-estructura-del-proyecto)
-  - [8. Comportamiento UX actual](#8-comportamiento-ux-actual)
-  - [9. Despliegue](#9-despliegue)
-  - [10. Documentación adicional](#10-documentación-adicional)
-  - [11. Notas útiles](#11-notas-útiles)
+Portafolio web construido con **Astro** y **Tailwind CSS**, planteado como un hub visual por secciones. Muestra experiencia, proyectos, servicios, tecnologías, certificados y vías de contacto de una forma clara, rápida y fácil de mantener.
 
-## 1. Descripción general
+🌍 **Web:** [aleixofdezcuevas.es](https://aleixofdezcuevas.es/) · 💻 **Código:** [github.com/FerCueA/FerCueAstro](https://github.com/FerCueA/FerCueAstro)
 
-`FerCueAstro` es un portfolio estático orientado a presentar trabajo profesional y servicios digitales con una estructura limpia y visual. Todo el contenido principal se gestiona desde una fuente de datos central para facilitar actualizaciones rápidas.
+---
 
-## 2. Qué incluye
+## ✨ Qué incluye
 
-- Navegación tipo hub con paneles dinámicos.
-- Secciones organizadas por dominio: conóceme, experiencia, proyectos, servicios, tecnologías, proceso, certificados y contacto.
-- Bloque "Conóceme" con presentación personal e intereses (tecnología, estar a la última, trail y carreras).
-- Experiencia profesional en formato timeline y sección de proceso de trabajo.
-- Diseño responsive con prioridad mobile-first.
-- Transiciones visuales y animaciones de aparición al hacer scroll, con fallback para dispositivos pequeños o usuarios con `reduced motion`.
-- Contenido editable desde un único archivo de datos.
+- 🧭 **Navegación tipo hub** con paneles dinámicos y transiciones suaves.
+- 🗂️ **Secciones por dominio:** conóceme, experiencia, proyectos, servicios, tecnologías, proceso, certificados y contacto.
+- 👤 **Bloque "Conóceme"** con presentación personal e intereses (tecnología, estar a la última, trail, running y senderismo).
+- 💼 **Experiencia** en formato timeline, con el puesto actual destacado.
+- 🚀 **Proyectos** con maqueta de navegador y enlaces a web y repositorio.
+- 🎓 **Certificados** filtrables por categoría, más la carta de recomendación.
+- 🪄 **Animaciones** de aparición al hacer scroll, respetando `prefers-reduced-motion`.
+- ♿ **Responsive** mobile-first y accesible.
+- 🧩 **Contenido centralizado** en un único archivo de datos.
 
-## 3. Stack tecnológico
+---
 
-| Herramienta    | Versión             |
-| -------------- | ------------------- |
-| `Astro`        | `6.1.1`             |
-| `Tailwind CSS` | `4.2.2`             |
-| `TypeScript`   | Integrado vía Astro |
+## 🛠️ Tecnologías
 
-## 4. Requisitos previos
+**🎨 Frontend**<br/>
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white) ![Astro](https://img.shields.io/badge/Astro-FF5D01?style=flat-square&logo=astro&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 
-Antes de arrancar el proyecto, necesitas tener instalado:
+**🧰 Calidad y tooling**<br/>
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 
-- `Node.js >= 22.12.0`
-- `npm`
+---
 
-## 5. Puesta en marcha
+## 🚀 Puesta en marcha
 
-### 5.1 Instalar dependencias
+### Requisitos
+
+- 🟢 `Node.js >= 22.12.0`
+- 📦 `npm`
+
+### Comandos
 
 ```bash
-npm install
+npm install       # instalar dependencias
+npm run dev       # entorno de desarrollo → http://localhost:4321
+npm run build     # generar la versión estática en dist/
+npm run preview   # servir localmente la build generada
 ```
 
-### 5.2 Levantar el entorno de desarrollo
+---
 
-```bash
-npm run dev
-```
-
-La aplicación queda disponible en:
-
-```text
-http://localhost:4321
-```
-
-### 5.3 Generar build y previsualizar
-
-```bash
-npm run build
-npm run preview
-```
-
-## 6. Scripts disponibles
+## 🧾 Scripts
 
 | Script                 | Descripción                                 |
 | ---------------------- | ------------------------------------------- |
@@ -89,64 +67,57 @@ npm run preview
 | `npm run format`       | Formatea el código con Prettier             |
 | `npm run format:check` | Comprueba el formato sin modificar archivos |
 
-## 7. Estructura del proyecto
+---
+
+## 📁 Estructura
 
 ```text
 src/
   components/
     front/PortfolioHub.astro
-    layout/
+    layout/BackgroundGlow.astro
     sections/
-      profile/
-      experience/
-      work/
-      services/
-      expertise/
-      process/
-      credentials/
-      engagement/
-    ui/
-  data/portfolio.ts
+      profile/        # Conóceme
+      experience/     # Experiencia (timeline)
+      work/           # Proyectos
+      services/       # Servicios
+      expertise/      # Tecnologías
+      process/        # Proceso
+      credentials/    # Certificados
+      engagement/     # Contacto
+    ui/SectionIntro.astro
+  data/portfolio.ts   # Fuente única de contenido
   layouts/MainLayout.astro
   pages/index.astro
   styles/global.css
   utils/viewTransitions.ts
 ```
 
-## 8. Comportamiento UX actual
+> 💡 Para cambiar textos o enlaces, normalmente basta con editar `src/data/portfolio.ts`.
+> Para tocar la navegación del hub, revisa `src/utils/viewTransitions.ts` y `src/components/front/PortfolioHub.astro`.
 
-- Menú principal con acceso a paneles mediante botones.
-- Al pulsar de nuevo la sección activa se cierra el panel y se vuelve al menú.
-- Experiencia profesional mostrada como timeline, con marca de "Actual" para el puesto en curso.
-- Proceso de trabajo en cuatro pasos.
-- Proyectos con maqueta de navegador y enlaces a web y repositorio.
-- Certificados mostrados en carrusel horizontal en móvil y en grid en pantallas mayores, con filtros por categoría.
-- Accesos rápidos desde la sección de perfil conectados al sistema de paneles.
-- Animaciones de aparición al hacer scroll, respetando `prefers-reduced-motion`.
+---
 
-## 9. Despliegue
+## 🚀 Despliegue
 
-Es un proyecto estático apto para plataformas como:
-
-- `Netlify`
-- `Vercel`
-- `GitHub Pages`
-- Hosting tradicional
-
-Configuración base de despliegue:
+Proyecto estático apto para **Netlify**, **Vercel**, **GitHub Pages** o hosting tradicional.
 
 - **Comando de build:** `npm run build`
 - **Carpeta de publicación:** `dist`
 
-## 10. Documentación adicional
+---
 
-- `src/components/ARCHITECTURE.md`
+## 📫 Contacto
 
-## 11. Notas útiles
-
-- Si solo necesitas cambiar textos o enlaces, normalmente basta con editar `src/data/portfolio.ts`.
-- Para tocar interacciones o navegación del hub, revisa `src/utils/viewTransitions.ts` y `src/components/front/PortfolioHub.astro`.
+<p align="center">
+  <a href="https://aleixofdezcuevas.es/"><img src="https://img.shields.io/badge/Portafolio-aleixofdezcuevas.es-5f4b78?style=for-the-badge&logo=astro&logoColor=white" alt="Portafolio" /></a>
+  <a href="mailto:fercuea90@protonmail.com"><img src="https://img.shields.io/badge/Email-fercuea90@protonmail.com-c99b45?style=for-the-badge&logo=protonmail&logoColor=white" alt="Email" /></a>
+  <a href="https://www.linkedin.com/in/aleixo-fernandez-cuevas-395a52367/"><img src="https://img.shields.io/badge/LinkedIn-Aleixo_Fernandez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://github.com/FerCueA"><img src="https://img.shields.io/badge/GitHub-FerCueA-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+</p>
 
 ---
 
-**Última actualización:** 27 de septiembre de 2026
+## 📚 Documentación adicional
+
+- [`src/components/ARCHITECTURE.md`](./src/components/ARCHITECTURE.md) — arquitectura de componentes.

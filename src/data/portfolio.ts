@@ -11,7 +11,7 @@ export interface Project {
 
 export interface Certificate {
 	title: string;
-	category: 'Frontend' | 'JavaScript' | 'Java y Spring' | 'Bases de datos' | 'Herramientas';
+	category: 'Frontend' | 'JavaScript' | 'Java y Spring' | 'Bases de datos' | 'Herramientas' | 'Recomendaciones';
 	issuer?: string;
 	href: string;
 }
@@ -33,7 +33,7 @@ export interface Service {
 
 export interface SkillGroup {
 	title: string;
-	icon: 'code' | 'cloud' | 'database' | 'tool';
+	icon: 'code' | 'server' | 'bolt' | 'bot' | 'clipboard' | 'database' | 'tool';
 	description: string;
 	items: string[];
 }
@@ -42,6 +42,7 @@ export interface Experience {
 	role: string;
 	company: string;
 	period: string;
+	location?: string;
 	description: string;
 	achievements: string[];
 	stack: string[];
@@ -57,9 +58,9 @@ export interface ProcessStep {
 
 export const profile = {
 	name: 'Aleixo Fernández Cuevas',
-	role: 'Desarrollador web frontend y full stack',
+	role: 'Desarrollador full stack y de automatización',
 	intro:
-		'Creo webs y aplicaciones que no solo se ven bien: también ayudan a vender mejor, transmitir confianza y convertir visitas en contactos reales.',
+		'Trabajo automatizando procesos con Microsoft Power Platform y construyendo aplicaciones web cuidadas, funcionales y bien estructuradas.',
 };
 
 export const navigationLinks = [
@@ -78,7 +79,7 @@ export const hubSections = [
 ];
 
 export const heroStats = [
-	{ value: '3', label: 'Proyectos reales mostrados en el portfolio' },
+	{ value: '4', label: 'Proyectos reales mostrados en el portfolio' },
 	{ value: '4', label: 'Servicios listos para contratar' },
 	{ value: '22', label: 'Certificados y formación completada' },
 	{ value: '4', label: 'Canales de contacto y presencia profesional' },
@@ -87,14 +88,14 @@ export const heroStats = [
 export interface Interest {
 	title: string;
 	description: string;
-	icon: 'chip' | 'spark' | 'mountain' | 'flag';
+	icon: 'chip' | 'spark' | 'mountain' | 'run' | 'hike';
 }
 
 export const about = {
 	heading: 'Conóceme',
 	title: 'Un poco sobre mí',
-	lead: 'Soy Aleixo Fernández Cuevas, desarrollador web frontend y full stack. Me gusta crear cosas que funcionan y se ven bien, y no parar de aprender.',
-	body: 'Disfruto convirtiendo ideas en webs y aplicaciones útiles: cuidando el detalle, el rendimiento y que todo se entienda a la primera. Trabajo igual de cómodo en el frontend que en el backend, y me motiva resolver problemas reales con tecnología.',
+	lead: 'Trabajo en todo el desarrollo —frontend, backend y automatización de procesos—, aunque donde más disfruto es en el frontend.',
+	body: 'Me gusta convertir ideas en productos funcionales y cuidar cada detalle del resultado. Mi objetivo: que cada proyecto se vea bien, se entienda rápido y resuelva un problema real. Código limpio, mantenible y fácil de escalar.',
 };
 
 export const interests: Interest[] = [
@@ -110,64 +111,81 @@ export const interests: Interest[] = [
 	},
 	{
 		title: 'Trail',
-		description: 'Desconectar en la montaña es mi forma de recargar ideas y energía.',
+		description: 'Disfruto del trail entre montañas: mi forma de desconectar y recargar ideas.',
 		icon: 'mountain',
 	},
 	{
-		title: 'Carreras',
-		description: 'Competir me da disciplina y constancia, dentro y fuera del código.',
-		icon: 'flag',
+		title: 'Running en suelo',
+		description: 'También salgo a correr en suelo para mantener el ritmo y la constancia.',
+		icon: 'run',
+	},
+	{
+		title: 'Senderismo',
+		description: 'Y me pierdo por rutas de senderismo siempre que puedo.',
+		icon: 'hike',
 	},
 ];
 
 export const projects: Project[] = [
 	{
-		title: 'Alvaro Garcia Osteopata',
-		category: 'Web corporativa',
+		title: 'FerCueAstro',
+		category: 'Web personal',
 		description:
-			'Web enfocada en captar clientes con una imagen profesional, estructura clara de servicios y una navegación pensada para facilitar el contacto.',
-		outcome: 'Resultado: presencia seria, mejor percepción de marca y contacto directo más visible.',
+			'Mi portafolio: navegación tipo hub, secciones por dominio y transiciones suaves entre paneles. Todo el contenido se gestiona desde una única fuente de datos.',
+		outcome: 'Resultado: una web rápida y mantenible, con identidad propia para mostrar mi trabajo y captar contactos.',
+		stack: ['Astro', 'Tailwind CSS', 'TypeScript'],
+		status: 'Publicado',
+		liveUrl: 'https://aleixofdezcuevas.es/',
+		repoUrl: 'https://github.com/FerCueA/FerCueAstro',
+	},
+	{
+		title: 'AlvaroG',
+		category: 'Landing de negocio',
+		description: 'Landing para un negocio de osteopatía, quiromasaje y terapias naturales en Las Palmas de Gran Canaria.',
+		outcome: 'Resultado: orientada a conversión en móvil y a reservas por WhatsApp.',
 		stack: ['Astro', 'Tailwind CSS'],
-		status: 'Destacado',
+		status: 'Publicado',
 		liveUrl: 'https://alvarogarciaosteopata.es/',
 		repoUrl: 'https://github.com/FerCueA/AlvaroG',
 	},
 	{
-		title: 'Juan González',
-		category: 'Landing page musical',
+		title: 'JuanGzSz',
+		category: 'Landing musical (SPA)',
 		description:
-			'Landing desarrollada con Angular para presentar la propuesta musical de Juan González, reforzar su identidad visual jazz/blues y facilitar reservas por contacto directo.',
-		outcome: 'Resultado: presencia online más cuidada, estética coherente con la marca artística y canal de contratación más visible.',
-		stack: ['Angular', 'Tailwind CSS', 'TypeScript', 'SSR'],
+			'Aplicación de una sola página para presentar la propuesta artística de Juan González, con una identidad visual inspirada en el jazz y el blues.',
+		outcome: 'Resultado: presencia online más cuidada y canal de contratación más visible.',
+		stack: ['Angular', 'TypeScript', 'Tailwind CSS', 'SSR'],
 		status: 'Publicado',
 		liveUrl: 'https://juangzsz.netlify.app/',
 		repoUrl: 'https://github.com/FerCueA/JuanGzSz',
 	},
 	{
-		title: 'Portfolio personal',
-		category: 'Web personal',
+		title: 'Duit',
+		category: 'Proyecto de ciclo · DAW',
 		description:
-			'Esta misma web: un hub interactivo por secciones, con animaciones al hacer scroll y todo el contenido centralizado, pensado para presentar mi trabajo y servicios.',
-		outcome: 'Resultado: una web rápida, mantenible y con identidad propia para mostrar proyectos y captar contactos.',
-		stack: ['Astro', 'Tailwind CSS', 'TypeScript'],
-		status: 'En desarrollo',
-		repoUrl: 'https://github.com/FerCueA/FerCueAstro',
+			'Aplicación web como proyecto de ciclo de Desarrollo de Aplicaciones Web: conecta clientes con profesionales y gestiona ofertas, candidaturas, perfiles y valoraciones.',
+		outcome: 'Resultado: base backend robusta con arquitectura MVC y despliegue en producción.',
+		stack: ['Java', 'Spring Boot', 'PostgreSQL', 'MVC'],
+		status: 'Proyecto académico',
+		liveUrl: 'https://duitapp.koyeb.app/',
+		repoUrl: 'https://github.com/FerCueA/Duit',
 	},
 ];
 
 export const experiences: Experience[] = [
 	{
-		role: 'Desarrollador',
-		company: 'Cognitia Tech',
-		period: 'Desde marzo',
+		role: 'Desarrollador de automatización',
+		company: 'Cognitiatech',
+		period: 'Marzo 2026 — Actualidad',
+		location: 'Gran Canaria (España)',
 		description:
-			'Desarrollo y automatización de procesos sobre la plataforma de Microsoft Power Automate, además de la personalización y el mantenimiento de Redmine para el equipo.',
+			'Consultora de IA y automatización y Microsoft Partner, especializada en Power Platform, agentes de IA y soluciones en la nube.',
 		achievements: [
-			'Diseño y automatización de flujos de trabajo con Microsoft Power Automate.',
-			'Personalización de Redmine: temas, plugins y mejoras de UI/UX.',
-			'Automatización de procesos y tratamiento de datos para el equipo.',
+			'Diseño y mantenimiento de flujos en Power Automate dentro de Power Platform.',
+			'Desarrollo de un theme para mejorar la interfaz de Redmine.',
+			'Gestión y seguimiento de tareas e incidencias con Redmine.',
 		],
-		stack: ['Power Automate', 'Microsoft 365', 'Redmine', 'Ruby', 'MySQL', 'Docker'],
+		stack: ['Power Automate', 'Power Platform', 'Redmine', 'Microsoft 365'],
 		current: true,
 	},
 	{
@@ -247,33 +265,56 @@ export const services: Service[] = [
 
 export const skillGroups: SkillGroup[] = [
 	{
-		title: 'Tecnologías',
+		title: 'Frontend',
 		icon: 'code',
-		description:
-			'Herramientas con las que construyo interfaces rápidas, webs bien presentadas y soluciones funcionales para negocio o producto.',
-		items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Astro', 'Angular', 'Tailwind CSS', 'Spring Boot', 'Bootstrap', 'Ruby', 'MVC'],
+		description: 'Interfaces limpias, adaptables y con buen rendimiento.',
+		items: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'Astro', 'Angular', 'Tailwind CSS', 'Bootstrap'],
 	},
 	{
-		title: 'Plataformas',
-		icon: 'cloud',
-		description: 'Servicios que utilizo para organizar tareas, desplegar proyectos y mantener flujos de trabajo más sólidos.',
-		items: ['Power Automate', 'Microsoft 365', 'Trello', 'Figma', 'Netlify', 'Supabase', 'Koyeb', 'Neon', 'GitHub'],
+		title: 'Backend',
+		icon: 'server',
+		description: 'Lógica de servidor y APIs con bases sólidas.',
+		items: ['Java', 'Spring Boot', 'MVC'],
+	},
+	{
+		title: 'Automatización',
+		icon: 'bolt',
+		description: 'Flujos que ahorran tiempo y reducen tareas manuales.',
+		items: ['Power Automate', 'Power Platform', 'Microsoft 365'],
+	},
+	{
+		title: 'IA',
+		icon: 'bot',
+		description: 'Herramientas de IA que aplico en el día a día del desarrollo.',
+		items: ['Agentes de IA', 'OpenCode', 'Claude'],
+	},
+	{
+		title: 'Gestión de proyectos',
+		icon: 'clipboard',
+		description: 'Organización, seguimiento de tareas e incidencias.',
+		items: ['Redmine', 'Trello'],
 	},
 	{
 		title: 'Bases de datos',
 		icon: 'database',
-		description: 'Motores de base de datos con los que estructuro, consulto y mantengo información de forma ordenada.',
+		description: 'Motores con los que estructuro, consulto y mantengo información.',
 		items: ['MySQL', 'PostgreSQL'],
 	},
 	{
-		title: 'Software',
+		title: 'Herramientas',
 		icon: 'tool',
-		description: 'Software técnico que uso para programar, gestionar datos y trabajar mejor el desarrollo del día a día.',
-		items: ['Visual Studio Code', 'DBeaver', 'Pentaho', 'Docker', 'Redmine'],
+		description: 'Software y servicios que uso para programar y desplegar.',
+		items: ['Git', 'GitHub', 'Docker', 'Figma', 'VS Code', 'DBeaver', 'Netlify'],
 	},
 ];
 
 export const certificates: Certificate[] = [
+	{
+		title: 'Carta de recomendación (prácticas)',
+		category: 'Recomendaciones',
+		issuer: 'Documento firmado (PDF)',
+		href: '/recomendacion/Carta_recomendacion_Aleixo_Fernandez_signed.pdf',
+	},
 	{
 		title: 'Curso de Spring Boot y Spring MVC 5',
 		category: 'Java y Spring',
