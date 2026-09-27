@@ -1,5 +1,7 @@
 ---
-import { about, heroStats, interests, profile } from '../../../data/portfolio';
+import { about, certificates, heroStats, interests, profile } from '../../../data/portfolio';
+
+const recommendation = certificates.find((certificate) => certificate.category === 'Recomendaciones');
 
 const initials = profile.name
 	.split(' ')
@@ -93,6 +95,23 @@ const interestIcons = {
 				</p>
 				<h2 class="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl">{about.title}</h2>
 				<p class="mt-4 text-base leading-7 text-ink/75 sm:text-lg sm:leading-8">{about.lead}</p>
+				{recommendation && (
+					<a
+						href={encodeURI(recommendation.href)}
+						target="_blank"
+						rel="noreferrer"
+						class="mt-5 inline-flex items-center gap-2 rounded-full border border-gold-main/30 bg-gold-main/10 px-4 py-2 text-sm font-semibold text-violet-deep transition hover:-translate-y-0.5 hover:bg-gold-main/20"
+					>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-4 w-4">
+							<path
+								d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 8.7l5.4-.8L12 3Z"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+						Ver carta de recomendación
+					</a>
+				)}
 			</div>
 
 			<div class="space-y-5">

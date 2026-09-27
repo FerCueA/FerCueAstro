@@ -20,8 +20,6 @@ src/
 │   │   │   └── ServicesSection.astro
 │   │   ├── expertise/      # Sección de tecnologías/habilidades
 │   │   │   └── TechnologiesSection.astro
-│   │   ├── process/        # Proceso de trabajo
-│   │   │   └── ProcessSection.astro
 │   │   ├── credentials/    # Sección de certificados/credenciales
 │   │   │   └── CertificatesSection.astro
 │   │   └── engagement/     # Sección de contacto
@@ -51,7 +49,6 @@ Las secciones están organizadas por área de negocio/contenido, no por tipo té
 - `work/` - Proyectos y trabajos realizados
 - `services/` - Servicios ofrecidos
 - `expertise/` - Habilidades y tecnologías
-- `process/` - Proceso de trabajo y metodología
 - `credentials/` - Certificaciones y formación
 - `engagement/` - Canales de contacto
 

@@ -16,7 +16,7 @@ Portafolio web construido con **Astro** y **Tailwind CSS**, planteado como un hu
 ## ✨ Qué incluye
 
 - 🧭 **Navegación tipo hub** con paneles dinámicos y transiciones suaves.
-- 🗂️ **Secciones por dominio:** conóceme, experiencia, proyectos, servicios, tecnologías, proceso, certificados y contacto.
+- 🗂️ **Secciones por dominio:** conóceme, experiencia, proyectos, servicios, tecnologías, certificados y contacto.
 - 👤 **Bloque "Conóceme"** con presentación personal e intereses (tecnología, estar a la última, trail, running y senderismo).
 - 💼 **Experiencia** en formato timeline, con el puesto actual destacado.
 - 🚀 **Proyectos** con maqueta de navegador y enlaces a web y repositorio.
@@ -82,7 +82,6 @@ src/
       work/           # Proyectos
       services/       # Servicios
       expertise/      # Tecnologías
-      process/        # Proceso
       credentials/    # Certificados
       engagement/     # Contacto
     ui/SectionIntro.astro

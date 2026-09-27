@@ -49,13 +49,6 @@ export interface Experience {
 	current?: boolean;
 }
 
-export interface ProcessStep {
-	step: string;
-	title: string;
-	description: string;
-	icon: 'search' | 'palette' | 'code' | 'rocket';
-}
-
 export const profile = {
 	name: 'Aleixo Fernández Cuevas',
 	role: 'Desarrollador full stack y de automatización',
@@ -68,7 +61,6 @@ export const navigationLinks = [
 	{ label: 'Proyectos', href: '#proyectos' },
 	{ label: 'Servicios', href: '#servicios' },
 	{ label: 'Tecnologías', href: '#tecnologias' },
-	{ label: 'Proceso', href: '#proceso' },
 	{ label: 'Certificados', href: '#certificados' },
 	{ label: 'Contacto', href: '#contacto' },
 ];
@@ -115,7 +107,7 @@ export const interests: Interest[] = [
 		icon: 'mountain',
 	},
 	{
-		title: 'Running en suelo',
+		title: 'Running',
 		description: 'También salgo a correr en suelo para mantener el ritmo y la constancia.',
 		icon: 'run',
 	},
@@ -200,33 +192,6 @@ export const experiences: Experience[] = [
 			'Trabajo directo con el cliente: del concepto a la publicación.',
 		],
 		stack: ['Astro', 'Angular', 'Tailwind CSS', 'Spring Boot'],
-	},
-];
-
-export const processSteps: ProcessStep[] = [
-	{
-		step: '01',
-		title: 'Descubrimiento',
-		description: 'Hablamos de tu negocio, tus objetivos y qué necesitas conseguir. Definimos alcance y prioridades.',
-		icon: 'search',
-	},
-	{
-		step: '02',
-		title: 'Diseño',
-		description: 'Propongo estructura, contenido y dirección visual alineadas con tu marca antes de escribir código.',
-		icon: 'palette',
-	},
-	{
-		step: '03',
-		title: 'Desarrollo',
-		description: 'Construyo la web con foco en velocidad, responsive y buenas prácticas, con revisiones contigo.',
-		icon: 'code',
-	},
-	{
-		step: '04',
-		title: 'Publicación y soporte',
-		description: 'Despliego, dejo todo medido y listo para mantenerlo y hacerlo crecer con el tiempo.',
-		icon: 'rocket',
 	},
 ];
 
