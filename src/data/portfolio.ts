@@ -71,7 +71,7 @@ export const hubSections = [
 ];
 
 export const heroStats = [
-	{ value: '4', label: 'Proyectos reales mostrados en el portfolio' },
+	{ value: '4', label: 'Proyectos reales mostrados en el portafolio' },
 	{ value: '4', label: 'Servicios listos para contratar' },
 	{ value: '22', label: 'Certificados y formación completada' },
 	{ value: '4', label: 'Canales de contacto y presencia profesional' },
@@ -131,7 +131,7 @@ export const projects: Project[] = [
 		repoUrl: 'https://github.com/FerCueA/FerCueAstro',
 	},
 	{
-		title: 'AlvaroG',
+		title: 'Álvaro García',
 		category: 'Landing de negocio',
 		description: 'Landing para un negocio de osteopatía, quiromasaje y terapias naturales en Las Palmas de Gran Canaria.',
 		outcome: 'Resultado: orientada a conversión en móvil y a reservas por WhatsApp.',
@@ -141,7 +141,7 @@ export const projects: Project[] = [
 		repoUrl: 'https://github.com/FerCueA/AlvaroG',
 	},
 	{
-		title: 'JuanGzSz',
+		title: 'Juan González',
 		category: 'Landing musical (SPA)',
 		description:
 			'Aplicación de una sola página para presentar la propuesta artística de Juan González, con una identidad visual inspirada en el jazz y el blues.',
@@ -171,10 +171,10 @@ export const experiences: Experience[] = [
 		period: 'Marzo 2026 — Actualidad',
 		location: 'Gran Canaria (España)',
 		description:
-			'Consultora de IA y automatización y Microsoft Partner, especializada en Power Platform, agentes de IA y soluciones en la nube.',
+			'Consultora de IA y automatización, Microsoft Partner, especializada en Power Platform, agentes de IA y soluciones en la nube.',
 		achievements: [
 			'Diseño y mantenimiento de flujos en Power Automate dentro de Power Platform.',
-			'Desarrollo de un theme para mejorar la interfaz de Redmine.',
+			'Desarrollo de un tema para mejorar la interfaz de Redmine.',
 			'Gestión y seguimiento de tareas e incidencias con Redmine.',
 		],
 		stack: ['Power Automate', 'Power Platform', 'Redmine', 'Microsoft 365'],

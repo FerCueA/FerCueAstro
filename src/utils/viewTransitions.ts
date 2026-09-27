@@ -38,7 +38,7 @@ export function initializeViewState(): ViewState {
 	const labelsById = new Map<string, string>();
 	menuButtons.forEach((button) => {
 		const target = button.dataset.target;
-		if (target) labelsById.set(target, button.dataset.label ?? 'Seccion');
+		if (target) labelsById.set(target, button.dataset.label ?? 'Sección');
 	});
 
 	return {
@@ -110,7 +110,7 @@ export function updateView(state: ViewState, targetId = ''): void {
 
 	// Update active section label
 	if (activeLabel) {
-		activeLabel.textContent = isOpen ? (labelsById.get(targetId) ?? 'Seccion') : 'Selecciona una sección';
+		activeLabel.textContent = isOpen ? (labelsById.get(targetId) ?? 'Sección') : 'Selecciona una sección';
 	}
 
 	// Keep hero stable in viewport when opening a section.
