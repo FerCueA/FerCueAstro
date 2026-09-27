@@ -97,17 +97,6 @@ export const projects: Project[] = [
 		repoUrl: 'https://github.com/FerCueA/AlvaroG',
 	},
 	{
-		title: 'Duit App',
-		category: 'Aplicación web',
-		description:
-			'Aplicación desarrollada con arquitectura MVC para mantener orden en el proyecto, facilitar escalabilidad y ofrecer una base backend robusta.',
-		outcome: 'Resultado: estructura técnica sólida, lógica bien separada y despliegue funcional en producción.',
-		stack: ['Spring Boot', 'Bootstrap', 'MVC'],
-		status: 'Activo',
-		liveUrl: 'https://duitapp.koyeb.app/',
-		repoUrl: 'https://github.com/FerCueA/Duit',
-	},
-	{
 		title: 'Juan González',
 		category: 'Landing page musical',
 		description:
@@ -117,6 +106,16 @@ export const projects: Project[] = [
 		status: 'Publicado',
 		liveUrl: 'https://juangzsz.netlify.app/',
 		repoUrl: 'https://github.com/FerCueA/JuanGzSz',
+	},
+	{
+		title: 'Portfolio personal',
+		category: 'Web personal',
+		description:
+			'Esta misma web: un hub interactivo por secciones, con animaciones al hacer scroll y todo el contenido centralizado, pensado para presentar mi trabajo y servicios.',
+		outcome: 'Resultado: una web rápida, mantenible y con identidad propia para mostrar proyectos y captar contactos.',
+		stack: ['Astro', 'Tailwind CSS', 'TypeScript'],
+		status: 'En desarrollo',
+		repoUrl: 'https://github.com/FerCueA/FerCueAstro',
 	},
 ];
 
