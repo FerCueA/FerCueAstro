@@ -102,7 +102,7 @@ export function setOpenStateClasses(state: ViewState, isOpen: boolean): void {
  * Update the view to show a specific panel
  */
 export function updateView(state: ViewState, targetId = ''): void {
-	const { menuButtons, panels, hub, stage, activeLabel, labelsById } = state;
+	const { menuButtons, panels, hub, activeLabel, labelsById } = state;
 	const isOpen = targetId.length > 0;
 	const wasOpen = hub?.classList.contains('is-open') ?? false;
 
@@ -119,7 +119,7 @@ export function updateView(state: ViewState, targetId = ''): void {
 
 	// Update active section label
 	if (activeLabel) {
-		activeLabel.textContent = isOpen ? labelsById.get(targetId) ?? 'Seccion' : 'Selecciona una sección';
+		activeLabel.textContent = isOpen ? (labelsById.get(targetId) ?? 'Seccion') : 'Selecciona una sección';
 	}
 
 	// Keep hero stable in viewport when opening a section.
@@ -138,8 +138,12 @@ export function runWithTransition(callback: () => void): void {
 		return;
 	}
 
-	if ('startViewTransition' in document) {
-		(document as any).startViewTransition(callback);
+	const doc = document as Document & {
+		startViewTransition?: (callback: () => void) => unknown;
+	};
+
+	if (typeof doc.startViewTransition === 'function') {
+		doc.startViewTransition(callback);
 		return;
 	}
 	callback();
