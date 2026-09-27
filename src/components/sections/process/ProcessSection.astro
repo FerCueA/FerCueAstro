@@ -1,0 +1,54 @@
+---
+import { processSteps } from '../../../data/portfolio';
+import SectionIntro from '../../ui/SectionIntro.astro';
+
+const iconPaths = {
+	search: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm5 12 4 4',
+	palette:
+		'M12 3a9 9 0 1 0 0 18 2 2 0 0 0 2-2c0-.5-.2-1-.6-1.3-.3-.4-.4-.8-.4-1.2a2 2 0 0 1 2-2h2a4 4 0 0 0 4-4c0-4-3.6-7.5-9-7.5ZM7.5 10.5h.01M10 7.5h.01M14 7.5h.01M16.5 10.5h.01',
+	code: 'M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14',
+	rocket:
+		'M12 3c3 0 6 3 6 7a6.6 6.6 0 0 1-1.6 4.3L12 18l-4.4-3.7A6.6 6.6 0 0 1 6 10c0-4 3-7 6-7Zm0 6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM8 18l-2 3M16 18l2 3',
+} as const;
+---
+
+<section id="proceso" class="py-10 sm:py-12 lg:py-16">
+	<div class="rounded-4xl border border-ink/8 bg-surface/90 p-5 shadow-sm shadow-black/5 sm:bg-surface/88 sm:p-8 sm:backdrop-blur-xl">
+		<div class="mb-6 flex flex-col gap-4 sm:mb-8 sm:gap-5 lg:flex-row lg:items-end lg:justify-between">
+			<div class="lg:max-w-3xl">
+				<SectionIntro
+					kicker="Proceso"
+					title="Cómo trabajamos juntos"
+					description="Un método claro y sin sorpresas: sabes en qué punto está tu proyecto en todo momento."
+				/>
+			</div>
+			<div class="flex flex-wrap items-center gap-2.5 sm:gap-3 lg:pb-8">
+				<span class="rounded-full border border-gold-main/20 bg-gold-main/10 px-3 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.14em] text-violet-deep sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.22em]">
+					{processSteps.length} pasos
+				</span>
+			</div>
+		</div>
+
+		<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+			{processSteps.map((step, index) => (
+				<article
+					class="group relative overflow-hidden rounded-3xl border border-ink/8 bg-paper/85 p-5 transition duration-300 hover:-translate-y-1 hover:border-gold-main/30 hover:shadow-lg hover:shadow-black/8"
+					data-reveal
+					style={`animation-delay:${index * 80}ms`}
+				>
+					<span aria-hidden="true" class="pointer-events-none absolute -right-2 -top-5 font-serif text-7xl leading-none text-gold-main/12">
+						{step.step}
+					</span>
+					<div class="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-gold-main/20 bg-gold-main/10 text-gold-soft">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-6 w-6">
+							<path d={iconPaths[step.icon]} stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</div>
+					<p class="relative mt-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-violet-deep">Paso {step.step}</p>
+					<h3 class="relative mt-2 text-lg font-semibold text-ink">{step.title}</h3>
+					<p class="relative mt-2 text-sm leading-6 text-ink/65">{step.description}</p>
+				</article>
+			))}
+		</div>
+	</div>
+</section>

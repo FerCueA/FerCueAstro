@@ -25,6 +25,9 @@ const { title, mainClass = 'relative mx-auto max-w-6xl px-6 pb-16 pt-8 lg:px-8' 
 		<meta name="theme-color" content="#f7f3eb" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script is:inline>
+			document.documentElement.classList.add('js');
+		</script>
 	</head>
 	<body class="text-ink">
 		<BackgroundGlow />

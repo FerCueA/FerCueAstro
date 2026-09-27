@@ -48,7 +48,7 @@ const contactIcons: Record<string, string> = {
 			</div>
 		</div>
 		<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
-			{contactLinks.map((item) => (
+			{contactLinks.map((item, index) => (
 				<a
 					href={item.href}
 					target="_blank"
@@ -58,6 +58,8 @@ const contactIcons: Record<string, string> = {
 						priorityChannels.has(item.label) ? 'sm:col-span-2 ring-1 ring-gold-main/25' : '',
 						contactStyles[item.label] ?? 'bg-surface text-ink hover:bg-paper border-ink/10',
 					]}
+					data-reveal
+					style={`animation-delay:${index * 70}ms`}
 				>
 					<div class="flex items-start justify-between gap-4">
 						<div class="flex items-center gap-2.5">

@@ -12,12 +12,16 @@ src/
 │   ├── sections/           # Secciones de contenido por dominio
 │   │   ├── profile/        # Sección de perfil/introducción
 │   │   │   └── HeroSection.astro
+│   │   ├── experience/     # Experiencia profesional (timeline)
+│   │   │   └── ExperienceSection.astro
 │   │   ├── work/           # Sección de proyectos/trabajos
 │   │   │   └── ProjectsSection.astro
 │   │   ├── services/       # Sección de servicios
 │   │   │   └── ServicesSection.astro
 │   │   ├── expertise/      # Sección de tecnologías/habilidades
 │   │   │   └── TechnologiesSection.astro
+│   │   ├── process/        # Proceso de trabajo
+│   │   │   └── ProcessSection.astro
 │   │   ├── credentials/    # Sección de certificados/credenciales
 │   │   │   └── CertificatesSection.astro
 │   │   └── engagement/     # Sección de contacto
@@ -43,9 +47,11 @@ src/
 Las secciones están organizadas por área de negocio/contenido, no por tipo técnico:
 
 - `profile/` - Todo sobre el perfil del desarrollador
+- `experience/` - Trayectoria profesional y puestos de trabajo
 - `work/` - Proyectos y trabajos realizados
 - `services/` - Servicios ofrecidos
 - `expertise/` - Habilidades y tecnologías
+- `process/` - Proceso de trabajo y metodología
 - `credentials/` - Certificaciones y formación
 - `engagement/` - Canales de contacto
 

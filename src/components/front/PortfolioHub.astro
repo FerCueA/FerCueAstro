@@ -2,7 +2,9 @@
 import { hubSections, profile } from '../../data/portfolio';
 import CertificatesSection from '../sections/credentials/CertificatesSection.astro';
 import ContactSection from '../sections/engagement/ContactSection.astro';
+import ExperienceSection from '../sections/experience/ExperienceSection.astro';
 import HeroSection from '../sections/profile/HeroSection.astro';
+import ProcessSection from '../sections/process/ProcessSection.astro';
 import ProjectsSection from '../sections/work/ProjectsSection.astro';
 import ServicesSection from '../sections/services/ServicesSection.astro';
 import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro';
@@ -12,14 +14,33 @@ import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro
 	<section
 		id="front-hero"
 		aria-label="Cabecera del portafolio"
-		class="grid min-h-[calc(100vh-2rem)] place-content-center justify-items-center gap-5 rounded-4xl border border-ink/10 bg-paper/90 px-4 py-7 shadow-[0_10px_24px_rgba(17,20,35,0.07)] transition-all duration-300 sm:gap-6 sm:px-8 sm:py-8 sm:shadow-[0_20px_46px_rgba(17,20,35,0.09)] sm:duration-500"
+		class="relative grid min-h-[calc(100vh-2rem)] place-content-center justify-items-center gap-5 overflow-hidden rounded-4xl border border-ink/10 bg-paper/90 px-4 py-8 shadow-[0_10px_24px_rgba(17,20,35,0.07)] transition-all duration-300 sm:gap-6 sm:px-8 sm:py-8 sm:shadow-[0_20px_46px_rgba(17,20,35,0.09)] sm:duration-500"
 	>
+		<div aria-hidden="true" class="grid-pattern pointer-events-none absolute inset-0 opacity-60"></div>
+		<div
+			aria-hidden="true"
+			class="animate-float-slow pointer-events-none absolute -left-20 -top-24 h-64 w-64 rounded-full bg-gold-main/20 blur-3xl"
+		></div>
+		<div
+			aria-hidden="true"
+			class="pointer-events-none absolute -right-16 bottom-[-3rem] h-72 w-72 rounded-full bg-violet-main/20 blur-3xl"
+		></div>
+
+		<p class="relative inline-flex items-center gap-2 rounded-full border border-gold-main/30 bg-gold-main/10 px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-violet-deep sm:text-xs">
+			<span class="h-1.5 w-1.5 rounded-full bg-gold-main"></span>
+			Disponible para proyectos
+		</p>
+
 		<h1
 			id="front-name"
-			class="max-w-full text-center font-serif text-[clamp(1.75rem,8.2vw,5.1rem)] leading-none tracking-[0.01em] text-ink transition-all duration-300 sm:whitespace-nowrap"
+			class="relative max-w-full text-center font-serif text-[clamp(1.9rem,6.2vw,5.1rem)] leading-none tracking-[0.01em] text-ink transition-all duration-300 sm:whitespace-nowrap"
 		>
 			{profile.name}
 		</h1>
+
+		<p class="relative max-w-xl text-center text-sm leading-6 text-ink/62 sm:text-base sm:leading-7">
+			{profile.role} · diseño, desarrollo y automatización con foco en resultados.
+		</p>
 		<nav
 			id="front-nav"
 			aria-label="Secciones principales"
@@ -38,6 +59,8 @@ import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro
 				</button>
 			))}
 		</nav>
+
+		<p class="relative text-[0.66rem] uppercase tracking-[0.18em] text-ink/40 sm:text-xs">Elige una sección para empezar</p>
 	</section>
 
 	<section
@@ -66,6 +89,9 @@ import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro
 			<div class="view-panel animate-[fadeIn_280ms_ease]" data-panel="perfil" hidden>
 				<HeroSection />
 			</div>
+			<div class="view-panel animate-[fadeIn_280ms_ease]" data-panel="experiencia" hidden>
+				<ExperienceSection />
+			</div>
 			<div class="view-panel animate-[fadeIn_280ms_ease]" data-panel="proyectos" hidden>
 				<ProjectsSection />
 			</div>
@@ -74,6 +100,9 @@ import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro
 			</div>
 			<div class="view-panel animate-[fadeIn_280ms_ease]" data-panel="tecnologias" hidden>
 				<TechnologiesSection />
+			</div>
+			<div class="view-panel animate-[fadeIn_280ms_ease]" data-panel="proceso" hidden>
+				<ProcessSection />
 			</div>
 			<div class="view-panel animate-[fadeIn_280ms_ease]" data-panel="certificados" hidden>
 				<CertificatesSection />
@@ -114,6 +143,26 @@ import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro
 	backButton?.addEventListener('click', () => {
 		runWithTransition(() => updateView(viewState, ''));
 	});
+
+	// Reveal sections on scroll as they enter the viewport
+	const revealTargets = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+	if (revealTargets.length > 0 && 'IntersectionObserver' in window) {
+		const revealObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						revealObserver.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+		);
+
+		revealTargets.forEach((target) => revealObserver.observe(target));
+	} else {
+		revealTargets.forEach((target) => target.classList.add('is-visible'));
+	}
 
 	// Initialize with closed view
 	updateView(viewState, '');

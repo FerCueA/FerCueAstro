@@ -38,6 +38,23 @@ export interface SkillGroup {
 	items: string[];
 }
 
+export interface Experience {
+	role: string;
+	company: string;
+	period: string;
+	description: string;
+	achievements: string[];
+	stack: string[];
+	current?: boolean;
+}
+
+export interface ProcessStep {
+	step: string;
+	title: string;
+	description: string;
+	icon: 'search' | 'palette' | 'code' | 'rocket';
+}
+
 export const profile = {
 	name: 'Aleixo Fernández Cuevas',
 	role: 'Desarrollador web frontend y full stack',
@@ -46,9 +63,11 @@ export const profile = {
 };
 
 export const navigationLinks = [
+	{ label: 'Experiencia', href: '#experiencia' },
 	{ label: 'Proyectos', href: '#proyectos' },
 	{ label: 'Servicios', href: '#servicios' },
 	{ label: 'Tecnologías', href: '#tecnologias' },
+	{ label: 'Proceso', href: '#proceso' },
 	{ label: 'Certificados', href: '#certificados' },
 	{ label: 'Contacto', href: '#contacto' },
 ];
@@ -59,8 +78,9 @@ export const hubSections = [
 ];
 
 export const heroStats = [
-	{ value: '4', label: 'Proyectos reales mostrados en el portfolio' },
+	{ value: '3', label: 'Proyectos reales mostrados en el portfolio' },
 	{ value: '4', label: 'Servicios listos para contratar' },
+	{ value: '22', label: 'Certificados y formación completada' },
 	{ value: '5', label: 'Canales de contacto y presencia profesional' },
 ];
 
@@ -98,15 +118,62 @@ export const projects: Project[] = [
 		liveUrl: 'https://juangzsz.netlify.app/',
 		repoUrl: 'https://github.com/FerCueA/JuanGzSz',
 	},
+];
+
+export const experiences: Experience[] = [
 	{
-		title: 'RedmineApp',
-		category: 'Customización Redmine',
+		role: 'Desarrollador',
+		company: 'Cognitia Tech',
+		period: 'Desde marzo',
 		description:
-			'Entorno de trabajo sobre Redmine para modificar el tema e instalar plugins que aporten valor real al equipo, incluyendo automatizaciones ETL y mejoras de accesibilidad, UI y UX.',
-		outcome: 'Resultado: base reproducible para validar cambios funcionales y visuales en Redmine con foco en usabilidad y mantenimiento.',
-		stack: ['Ruby', 'Redmine', 'MySQL', 'Docker'],
-		status: 'En desarrollo',
-		repoUrl: 'https://github.com/FerCueA/RedmineApp',
+			'Desarrollo y automatización de procesos sobre la plataforma de Microsoft Power Automate, además de la personalización y el mantenimiento de Redmine para el equipo.',
+		achievements: [
+			'Diseño y automatización de flujos de trabajo con Microsoft Power Automate.',
+			'Personalización de Redmine: temas, plugins y mejoras de UI/UX.',
+			'Automatización de procesos y tratamiento de datos para el equipo.',
+		],
+		stack: ['Power Automate', 'Microsoft 365', 'Redmine', 'Ruby', 'MySQL', 'Docker'],
+		current: true,
+	},
+	{
+		role: 'Desarrollo web freelance',
+		company: 'Proyectos propios',
+		period: 'En paralelo',
+		description:
+			'Diseño y desarrollo de webs corporativas, landings y aplicaciones para clientes y proyectos propios, cuidando rendimiento, claridad y conversión.',
+		achievements: [
+			'Webs corporativas y landings publicadas y funcionando en producción.',
+			'Aplicaciones web con arquitectura MVC y despliegue propio.',
+			'Trabajo directo con el cliente: del concepto a la publicación.',
+		],
+		stack: ['Astro', 'Angular', 'Tailwind CSS', 'Spring Boot'],
+	},
+];
+
+export const processSteps: ProcessStep[] = [
+	{
+		step: '01',
+		title: 'Descubrimiento',
+		description: 'Hablamos de tu negocio, tus objetivos y qué necesitas conseguir. Definimos alcance y prioridades.',
+		icon: 'search',
+	},
+	{
+		step: '02',
+		title: 'Diseño',
+		description: 'Propongo estructura, contenido y dirección visual alineadas con tu marca antes de escribir código.',
+		icon: 'palette',
+	},
+	{
+		step: '03',
+		title: 'Desarrollo',
+		description: 'Construyo la web con foco en velocidad, responsive y buenas prácticas, con revisiones contigo.',
+		icon: 'code',
+	},
+	{
+		step: '04',
+		title: 'Publicación y soporte',
+		description: 'Despliego, dejo todo medido y listo para mantenerlo y hacerlo crecer con el tiempo.',
+		icon: 'rocket',
 	},
 ];
 
@@ -155,7 +222,7 @@ export const skillGroups: SkillGroup[] = [
 		title: 'Plataformas',
 		icon: 'cloud',
 		description: 'Servicios que utilizo para organizar tareas, desplegar proyectos y mantener flujos de trabajo más sólidos.',
-		items: ['Trello', 'Figma', 'Netlify', 'Supabase', 'Koyeb', 'Neon', 'GitHub'],
+		items: ['Power Automate', 'Microsoft 365', 'Trello', 'Figma', 'Netlify', 'Supabase', 'Koyeb', 'Neon', 'GitHub'],
 	},
 	{
 		title: 'Bases de datos',
