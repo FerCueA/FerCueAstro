@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
 	--color-ink: #1f2433;
@@ -10,8 +10,8 @@
 	--color-paper: #f7f3eb;
 	--color-surface: #fffaf2;
 	--color-mist: #ece3d7;
-	--font-sans: "Space Grotesk", sans-serif;
-	--font-serif: "Fraunces", serif;
+	--font-sans: 'Space Grotesk', sans-serif;
+	--font-serif: 'Fraunces', serif;
 }
 
 :root {
@@ -21,16 +21,27 @@
 		radial-gradient(circle at 82% 16%, rgba(140, 111, 157, 0.16), transparent 28%),
 		linear-gradient(180deg, #fbf7f0 0%, #f6efe5 54%, #f3eadf 100%);
 	background-color: #f7f3eb;
-	font-family: "Space Grotesk", sans-serif;
+	font-family: 'Space Grotesk', sans-serif;
 	scroll-behavior: smooth;
 }
 
 body {
 	min-height: 100vh;
 	background: transparent;
-	color: var(--color-paper);
+	color: var(--color-ink);
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @media (max-width: 640px) {

@@ -35,11 +35,11 @@ Portafolio web construido con `Astro` y `Tailwind CSS`, planteado como un hub vi
 
 ## 3. Stack tecnológico
 
-| Herramienta | Versión |
-| --- | --- |
-| `Astro` | `6.1.1` |
-| `Tailwind CSS` | `4.2.2` |
-| `TypeScript` | Integrado vía Astro |
+| Herramienta    | Versión             |
+| -------------- | ------------------- |
+| `Astro`        | `6.1.1`             |
+| `Tailwind CSS` | `4.2.2`             |
+| `TypeScript`   | Integrado vía Astro |
 
 ## 4. Requisitos previos
 
@@ -77,11 +77,15 @@ npm run preview
 
 ## 6. Scripts disponibles
 
-| Script | Descripción |
-| --- | --- |
-| `npm run dev` | Inicia el entorno de desarrollo |
-| `npm run build` | Genera la versión estática en `dist/` |
-| `npm run preview` | Sirve localmente la build generada |
+| Script                 | Descripción                                 |
+| ---------------------- | ------------------------------------------- |
+| `npm run dev`          | Inicia el entorno de desarrollo             |
+| `npm run build`        | Genera la versión estática en `dist/`       |
+| `npm run preview`      | Sirve localmente la build generada          |
+| `npm run check`        | Valida tipos y plantillas con `astro check` |
+| `npm run lint`         | Analiza el código con ESLint                |
+| `npm run format`       | Formatea el código con Prettier             |
+| `npm run format:check` | Comprueba el formato sin modificar archivos |
 
 ## 7. Estructura del proyecto
 
@@ -128,7 +132,6 @@ Configuración base de despliegue:
 
 ## 10. Documentación adicional
 
-- `ARCHITECTURE_GUIDE.md`
 - `src/components/ARCHITECTURE.md`
 
 ## 11. Notas útiles
@@ -138,4 +141,4 @@ Configuración base de despliegue:
 
 ---
 
-**Última actualización:** 9 de abril de 2026
+**Última actualización:** 27 de septiembre de 2026
