@@ -9,7 +9,6 @@ export interface ViewState {
 	hero: HTMLElement | null;
 	name: HTMLElement | null;
 	stage: HTMLElement | null;
-	backButton: HTMLButtonElement | null;
 	activeLabel: HTMLElement | null;
 	menuButtons: HTMLButtonElement[];
 	panels: HTMLElement[];
@@ -32,7 +31,6 @@ export function initializeViewState(): ViewState {
 	const hero = document.getElementById('front-hero');
 	const name = document.getElementById('front-name');
 	const stage = document.getElementById('view-stage');
-	const backButton = document.getElementById('back-to-menu') as HTMLButtonElement | null;
 	const activeLabel = document.getElementById('active-section-label');
 	const menuButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.menu-option'));
 	const panels = Array.from(document.querySelectorAll<HTMLElement>('.view-panel'));
@@ -48,7 +46,6 @@ export function initializeViewState(): ViewState {
 		hero,
 		name,
 		stage,
-		backButton,
 		activeLabel,
 		menuButtons,
 		panels,

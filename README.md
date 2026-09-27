@@ -115,7 +115,7 @@ src/
 ## 8. Comportamiento UX actual
 
 - Menú principal con acceso a paneles mediante botones.
-- Botón de vuelta al menú dentro del área de contenido.
+- Al pulsar de nuevo la sección activa se cierra el panel y se vuelve al menú.
 - Experiencia profesional mostrada como timeline, con marca de "Actual" para el puesto en curso.
 - Proceso de trabajo en cuatro pasos.
 - Proyectos con maqueta de navegador y enlaces a web y repositorio.

@@ -69,17 +69,11 @@ import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro
 		aria-hidden="true"
 		class="pointer-events-none mt-3 max-h-0 translate-y-4 overflow-hidden opacity-0 transition-all duration-300 sm:mt-4"
 	>
-		<div class="sticky top-2 z-10 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-ink/10 bg-paper/95 p-2.5 sm:flex-nowrap sm:gap-3 sm:bg-paper/90 sm:p-3 sm:backdrop-blur-sm">
-			<button
-				id="back-to-menu"
-				type="button"
-				class="rounded-full border border-ink/15 bg-surface px-3.5 py-2 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-ink/80 transition hover:border-gold-main/40 hover:bg-gold-main/10 sm:px-4 sm:text-[0.68rem] sm:tracking-[0.16em]"
-			>
-				Volver al menú
-			</button>
+		<div class="sticky top-2 z-10 flex items-center gap-2.5 rounded-2xl border border-ink/10 bg-paper/95 px-4 py-2.5 shadow-sm shadow-black/5 sm:bg-paper/90 sm:backdrop-blur-sm">
+			<span class="h-1.5 w-1.5 rounded-full bg-gold-main"></span>
 			<p
 				id="active-section-label"
-				class="text-[0.66rem] font-bold uppercase tracking-[0.14em] text-ink/55 sm:text-[0.72rem] sm:tracking-[0.2em]"
+				class="text-[0.66rem] font-bold uppercase tracking-[0.14em] text-ink/70 sm:text-[0.72rem] sm:tracking-[0.2em]"
 			>
 				Selecciona una sección
 			</p>
@@ -118,14 +112,15 @@ import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro
 	import { initializeViewState, updateView, runWithTransition } from '../../utils/viewTransitions';
 
 	const viewState = initializeViewState();
-	const { menuButtons, backButton } = viewState;
+	const { menuButtons } = viewState;
 
-	// Setup menu button event listeners
+	// Setup menu button event listeners (clicking the active section closes it)
 	menuButtons.forEach((button) => {
 		button.addEventListener('click', () => {
 			const target = button.dataset.target;
 			if (!target) return;
-			runWithTransition(() => updateView(viewState, target));
+			const isActive = button.getAttribute('aria-pressed') === 'true';
+			runWithTransition(() => updateView(viewState, isActive ? '' : target));
 		});
 	});
 
@@ -137,11 +132,6 @@ import TechnologiesSection from '../sections/expertise/TechnologiesSection.astro
 			if (!target) return;
 			runWithTransition(() => updateView(viewState, target));
 		});
-	});
-
-	// Setup back button event listener
-	backButton?.addEventListener('click', () => {
-		runWithTransition(() => updateView(viewState, ''));
 	});
 
 	// Reveal sections on scroll as they enter the viewport
