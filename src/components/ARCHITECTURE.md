@@ -25,9 +25,7 @@ src/
 │   ├── ui/                 # Componentes UI reutilizables
 │   │   └── SectionIntro.astro
 │   └── layout/             # Componentes de layout global
-│       ├── BackgroundGlow.astro
-│       ├── SiteHeader.astro
-│       └── SiteFooter.astro
+│       └── BackgroundGlow.astro
 ├── data/
 │   └── portfolio.ts        # Configuración centralizada
 ├── layouts/
@@ -72,8 +70,7 @@ Las secciones están organizadas por área de negocio/contenido, no por tipo té
 
 - `SectionIntro.astro` - Encabezado estándar para secciones
 - `MainLayout.astro` - Layout base con props configurables:
-  - `showHeader` - Mostrar/ocultar encabezado
-  - `showFooter` - Mostrar/ocultar pie de página
+  - `title` - Título del documento
   - `mainClass` - Personalizar clases del contenedor principal
 
 ### 5. **Separación de Responsabilidades**
