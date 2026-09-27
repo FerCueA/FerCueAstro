@@ -56,14 +56,16 @@ const stackCount = new Set(projects.flatMap((project) => project.stack)).size;
 					))}
 				</div>
 				<div class="mt-5 grid gap-2.5 sm:mt-6 sm:flex sm:gap-3">
-					<a
-						href={project.liveUrl}
-						target="_blank"
-						rel="noreferrer"
-						class="inline-flex w-full justify-center rounded-full bg-gold-main px-4 py-2 text-sm font-semibold text-ink transition hover:bg-gold-soft sm:w-auto"
-					>
-						Ver proyecto
-					</a>
+					{project.liveUrl && (
+						<a
+							href={project.liveUrl}
+							target="_blank"
+							rel="noreferrer"
+							class="inline-flex w-full justify-center rounded-full bg-gold-main px-4 py-2 text-sm font-semibold text-ink transition hover:bg-gold-soft sm:w-auto"
+						>
+							Ver proyecto
+						</a>
+					)}
 					<a
 						href={project.repoUrl}
 						target="_blank"

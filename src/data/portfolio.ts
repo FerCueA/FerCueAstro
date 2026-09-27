@@ -13,7 +13,6 @@ export interface Certificate {
 	title: string;
 	category: 'Frontend' | 'JavaScript' | 'Java y Spring' | 'Bases de datos' | 'Herramientas';
 	issuer?: string;
-	year?: string;
 	href: string;
 }
 
