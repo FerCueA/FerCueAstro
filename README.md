@@ -84,11 +84,17 @@ src/
       expertise/      # Tecnologías
       credentials/    # Certificados
       engagement/     # Contacto
-    ui/SectionIntro.astro
+    ui/                # Componentes base reutilizables
+      Badge.astro
+      Button.astro
+      Icon.astro
+      SectionIntro.astro
+      SectionShell.astro
+      Tag.astro
   data/portfolio.ts   # Fuente única de contenido
   layouts/MainLayout.astro
   pages/index.astro
-  styles/global.css
+  styles/global.css   # Tokens del design system
   utils/viewTransitions.ts
 ```
 
@@ -119,4 +125,6 @@ Proyecto estático apto para **Netlify**, **Vercel**, **GitHub Pages** o hosting
 
 ## 📚 Documentación adicional
 
-- [`src/components/ARCHITECTURE.md`](./src/components/ARCHITECTURE.md) — arquitectura de componentes.
+- [`DESIGN.md`](./DESIGN.md) — sistema de diseño (referencia para UI).
+- [`AGENTS.md`](./AGENTS.md) — reglas para agentes de IA.
+- [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) — arquitectura de componentes.

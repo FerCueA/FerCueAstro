@@ -24,8 +24,13 @@ src/
 │   │   │   └── CertificatesSection.astro
 │   │   └── engagement/     # Sección de contacto
 │   │       └── ContactSection.astro
-│   ├── ui/                 # Componentes UI reutilizables
-│   │   └── SectionIntro.astro
+│   ├── ui/                 # Componentes UI reutilizables (design system)
+│   │   ├── Badge.astro
+│   │   ├── Button.astro
+│   │   ├── Icon.astro
+│   │   ├── SectionIntro.astro
+│   │   ├── SectionShell.astro
+│   │   └── Tag.astro
 │   └── layout/             # Componentes de layout global
 │       └── BackgroundGlow.astro
 ├── data/
@@ -71,7 +76,14 @@ Las secciones están organizadas por área de negocio/contenido, no por tipo té
 
 ### 4. **Reutilización de Componentes**
 
+Componentes base en `src/components/ui/` (ver `DESIGN.md` para el detalle visual):
+
+- `SectionShell.astro` - Panel de sección + cabecera (intro + badges + slots)
 - `SectionIntro.astro` - Encabezado estándar para secciones
+- `Badge.astro` - Pills de meta/estado
+- `Tag.astro` - Chips de tecnologías/stacks
+- `Button.astro` - Botones y enlaces de acción
+- `Icon.astro` - Set de iconos centralizado (única fuente de SVG)
 - `MainLayout.astro` - Layout base con props configurables:
   - `title` - Título del documento
   - `mainClass` - Personalizar clases del contenedor principal
@@ -112,14 +124,12 @@ menu-cerrado          menu-abierto
 ```astro
 ---
 import { data } from '../../../data/portfolio';
-import SectionIntro from '../../ui/SectionIntro.astro';
+import SectionShell from '../../ui/SectionShell.astro';
 ---
 
-<section id="seccion-id" class="py-12 lg:py-16">
-	<SectionIntro kicker="Palabra clave" title="Título Principal" description="Descripción breve" />
-
+<SectionShell id="seccion-id" index="07" kicker="Palabra clave" title="Título principal" description="Descripción breve">
 	{/* Contenido específico */}
-</section>
+</SectionShell>
 ```
 
 ### Rutas de Importación
@@ -143,15 +153,14 @@ mkdir -p src/components/sections/nueva-area/
 ```astro
 ---
 import { datosNueva } from '../../../data/portfolio';
-import SectionIntro from '../../ui/SectionIntro.astro';
+import SectionShell from '../../ui/SectionShell.astro';
 ---
 
-<section id="nueva" class="py-12 lg:py-16">
-	<SectionIntro kicker="Nueva" title="Mi nueva sección" />
+<SectionShell id="nueva" index="07" kicker="Nueva" title="Mi nueva sección">
 	{datosNueva.map((item) => (
 		<div>{item.name}</div>
 	))}
-</section>
+</SectionShell>
 ```
 
 ### Paso 3: Agregar a Portfolio Data
@@ -163,10 +172,9 @@ export const nuevaData = [
   { name: 'Item 1', ... },
 ];
 
-// Agregar a hubSections si necesita que sea navegable
-export const hubSections = [
-  { id: 'perfil', label: 'Perfil' },
-  { id: 'nueva', label: 'Nueva Seccion' }, // ← agregar aquí
+// Agregar a navigationLinks (de él se derivan las secciones del hub)
+export const navigationLinks = [
+  { label: 'Nueva', href: '#nueva' }, // ← agregar aquí
   // ...
 ];
 ```

@@ -1,5 +1,7 @@
 ---
 import { contactLinks } from '../../../data/portfolio';
+import Badge from '../../ui/Badge.astro';
+import Icon from '../../ui/Icon.astro';
 import SectionIntro from '../../ui/SectionIntro.astro';
 
 const priorityChannels = new Set(['Correo', 'WhatsApp']);
@@ -11,20 +13,16 @@ const contactStyles: Record<string, string> = {
 	WhatsApp: 'bg-[#25d366]/14 text-ink hover:bg-[#25d366]/20 border-[#25d366]/26',
 };
 
-const contactIcons: Record<string, string> = {
-	Correo:
-		'M3.75 5.25h12.5A1.75 1.75 0 0 1 18 7v6a1.75 1.75 0 0 1-1.75 1.75H3.75A1.75 1.75 0 0 1 2 13V7a1.75 1.75 0 0 1 1.75-1.75Zm0 1.5v.16l6.25 4.37 6.25-4.37v-.16H3.75Zm12.5 6.5V8.73l-5.82 4.07a.75.75 0 0 1-.86 0L3.75 8.73v4.52c0 .14.11.25.25.25h12c.14 0 .25-.11.25-.25Z',
-	LinkedIn:
-		'M4.5 3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM3.5 7h2V16h-2V7Zm4 0h1.92v1.23h.03c.27-.5.93-1.23 1.91-1.23 2.04 0 2.42 1.35 2.42 3.1V16h-2v-4.36c0-1.04-.02-2.38-1.45-2.38-1.46 0-1.68 1.14-1.68 2.3V16h-2V7Z',
-	GitHub:
-		'M10 2.5a7.5 7.5 0 0 0-2.37 14.62c.38.07.52-.17.52-.38v-1.35c-2.11.46-2.56-.89-2.56-.89-.35-.87-.84-1.1-.84-1.1-.69-.47.05-.46.05-.46.76.05 1.17.79 1.17.79.68 1.16 1.78.83 2.22.64.07-.49.27-.83.49-1.03-1.68-.19-3.44-.84-3.44-3.73 0-.83.3-1.5.79-2.03-.08-.19-.34-.96.07-2 0 0 .64-.2 2.09.78a7.19 7.19 0 0 1 3.8 0c1.45-.98 2.09-.78 2.09-.78.41 1.04.15 1.81.07 2 .49.53.79 1.2.79 2.03 0 2.9-1.76 3.54-3.45 3.73.28.24.52.7.52 1.42v2.11c0 .21.14.46.52.38A7.5 7.5 0 0 0 10 2.5Z',
-	WhatsApp:
-		'M10.01 2.5a7.48 7.48 0 0 0-6.45 11.28L2.5 17.5l3.83-1.01A7.5 7.5 0 1 0 10.01 2.5Zm0 13.5a6 6 0 0 1-3.05-.83l-.22-.13-2.28.6.61-2.22-.14-.23a6 6 0 1 1 5.08 2.81Zm3.29-4.48c-.18-.09-1.08-.53-1.24-.59-.17-.06-.29-.09-.41.09-.12.18-.47.58-.58.7-.11.12-.21.13-.39.04-.18-.09-.75-.28-1.43-.89-.53-.47-.89-1.05-.99-1.23-.1-.18-.01-.27.08-.36.08-.08.18-.21.27-.31.09-.11.12-.18.18-.3.06-.12.03-.23-.02-.32-.05-.09-.41-.99-.56-1.35-.15-.36-.31-.31-.41-.31h-.35c-.12 0-.32.05-.49.23-.17.18-.64.63-.64 1.55s.66 1.81.75 1.94c.09.12 1.29 1.97 3.13 2.77.44.19.78.3 1.05.38.44.14.85.12 1.17.07.36-.05 1.08-.44 1.23-.87.15-.43.15-.79.11-.87-.05-.08-.17-.12-.35-.21Z',
+const contactIcons: Record<string, 'email' | 'linkedin' | 'github' | 'whatsapp'> = {
+	Correo: 'email',
+	LinkedIn: 'linkedin',
+	GitHub: 'github',
+	WhatsApp: 'whatsapp',
 };
 ---
 
 <section id="contacto" class="py-10 sm:py-12 lg:py-16">
-	<div class="grid gap-7 rounded-4xl border border-ink/8 bg-linear-to-br from-violet-soft/35 via-surface/95 to-gold-soft/25 p-5 shadow-sm shadow-black/5 sm:gap-8 sm:p-8 sm:backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr]">
+	<div class="grid gap-7 rounded-panel border border-ink/8 bg-linear-to-br from-violet-soft/35 via-surface/95 to-gold-soft/25 p-5 shadow-soft sm:gap-8 sm:p-8 sm:backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr]">
 		<div>
 			<SectionIntro
 				index="06"
@@ -37,12 +35,8 @@ const contactIcons: Record<string, string> = {
 				una propuesta genérica.
 			</p>
 			<div class="mt-5 flex flex-wrap items-center gap-2.5 sm:mt-6 sm:gap-3">
-				<span class="rounded-full border border-gold-main/20 bg-gold-main/10 px-3 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.14em] text-violet-deep sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.22em]">
-					{contactLinks.length} canales
-				</span>
-				<span class="rounded-full border border-violet-main/20 bg-violet-soft/35 px-3 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.14em] text-violet-deep sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.22em]">
-					respuesta rápida
-				</span>
+				<Badge variant="gold">{contactLinks.length} canales</Badge>
+				<Badge variant="violet">respuesta rápida</Badge>
 			</div>
 		</div>
 		<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
@@ -52,19 +46,17 @@ const contactIcons: Record<string, string> = {
 					target="_blank"
 					rel="noreferrer"
 					class:list={[
-						'group relative flex min-h-26 flex-col justify-between overflow-hidden rounded-2xl border px-4 py-3 shadow-sm shadow-black/5 transition duration-200 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 lg:col-span-3',
+						'group relative flex min-h-26 flex-col justify-between overflow-hidden rounded-inner border px-4 py-3 shadow-soft transition duration-200 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 lg:col-span-3',
 						priorityChannels.has(item.label) ? 'sm:col-span-2 ring-1 ring-gold-main/25' : '',
-						contactStyles[item.label] ?? 'bg-surface text-ink hover:bg-paper border-ink/10',
+						contactStyles[item.label] ?? 'border-ink/10 bg-surface text-ink hover:bg-paper',
 					]}
 					data-reveal
 					style={`animation-delay:${index * 70}ms`}
 				>
 					<div class="flex items-start justify-between gap-4">
 						<div class="flex items-center gap-2.5">
-							<span class="flex h-9 w-9 items-center justify-center rounded-xl bg-white/65 ring-1 ring-white/75 backdrop-blur-sm">
-								<svg viewBox="0 0 20 20" fill="currentColor" class="h-4.5 w-4.5" aria-hidden="true">
-									<path d={contactIcons[item.label] ?? contactIcons.Correo}></path>
-								</svg>
+							<span class="flex h-9 w-9 items-center justify-center rounded-inner bg-white/65 ring-1 ring-white/75 backdrop-blur-sm">
+								<Icon name={contactIcons[item.label] ?? 'email'} class="h-4.5 w-4.5" />
 							</span>
 							<div>
 								<p class="text-[0.62rem] uppercase tracking-[0.16em] text-ink/55 sm:tracking-[0.22em]">Canal</p>
@@ -81,26 +73,17 @@ const contactIcons: Record<string, string> = {
 							</span>
 						)}
 					</div>
-					<div class="mt-3 rounded-xl border border-white/70 bg-white/90 px-3 py-2 text-ink shadow-sm shadow-black/8">
+					<div class="mt-3 rounded-inner border border-white/70 bg-white/90 px-3 py-2 text-ink shadow-soft">
 						<p class="text-[0.62rem] uppercase tracking-[0.16em] text-ink/52 sm:tracking-[0.2em]">Dato de contacto</p>
 						<p class="mt-1 text-xs font-medium leading-5 sm:text-sm">{item.value}</p>
 					</div>
 					<span class="mt-3 inline-flex items-center gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-ink/74 sm:tracking-[0.16em]">
 						Ir al canal
-						<svg
-							viewBox="0 0 20 20"
-							fill="none"
+						<Icon
+							name="arrowRight"
 							class="h-4 w-4 transition group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5"
-							aria-hidden="true"
-						>
-							<path
-								d="M4.166 10h11.667m0 0-4.167-4.167M15.833 10l-4.167 4.167"
-								stroke="currentColor"
-								stroke-width="1.6"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							></path>
-						</svg>
+							strokeWidth={1.6}
+						/>
 					</span>
 				</a>
 			))}

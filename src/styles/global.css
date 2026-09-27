@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
+	/* Colors */
 	--color-ink: #1f2433;
 	--color-violet-deep: #5f4b78;
 	--color-violet-main: #8c6f9d;
@@ -9,8 +10,26 @@
 	--color-gold-soft: #ecd9aa;
 	--color-paper: #f7f3eb;
 	--color-surface: #fffaf2;
+
+	/* Feedback colors (reserved, documented in DESIGN.md) */
+	--color-success: #3f8f5f;
+	--color-warning: #c98a2b;
+	--color-error: #c2493f;
+	--color-info: #4b6fb0;
+
+	/* Typography */
 	--font-sans: 'Space Grotesk', sans-serif;
 	--font-serif: 'Fraunces', serif;
+
+	/* Radius scale */
+	--radius-inner: 1rem;
+	--radius-card: 1.5rem;
+	--radius-panel: 2rem;
+
+	/* Elevation */
+	--shadow-soft: 0 1px 2px rgba(17, 20, 35, 0.05);
+	--shadow-card: 0 10px 24px rgba(17, 20, 35, 0.07);
+	--shadow-lift: 0 20px 46px rgba(17, 20, 35, 0.09);
 }
 
 :root {

@@ -1,7 +1,7 @@
 ---
 import { about, certificates, heroStats, interests, profile } from '../../../data/portfolio';
-
-const recommendation = certificates.find((certificate) => certificate.category === 'Recomendaciones');
+import Button from '../../ui/Button.astro';
+import Icon from '../../ui/Icon.astro';
 
 const initials = profile.name
 	.split(' ')
@@ -10,18 +10,12 @@ const initials = profile.name
 	.map((word) => word[0])
 	.join('');
 
-const interestIcons = {
-	chip: 'M7 7h10v10H7zM9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2',
-	spark: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z',
-	mountain: 'M3 18l6-9 4 5.5 2.5-3L21 18H3ZM13 7l1.5-2.5L16 7',
-	run: 'M13.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM9 22l2.5-6-3-2.5 1-5 3 2 3 1M6 13l2-3 3-1',
-	hike: 'M13.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM8 21l3-7 3 2v5M16 21l-2-6 2-4M11 9l3-2 3 3',
-} as const;
+const recommendation = certificates.find((certificate) => certificate.category === 'Recomendaciones');
 ---
 
 <section id="inicio" class="py-5 sm:py-6 lg:py-10">
 	<div class="grid items-center gap-7 lg:grid-cols-[1.15fr_0.85fr]">
-		<div class="relative overflow-hidden rounded-4xl border border-ink/8 bg-surface/90 p-5 shadow-sm shadow-black/5 sm:p-7">
+		<div class="relative overflow-hidden rounded-panel border border-ink/8 bg-surface/90 p-5 shadow-soft sm:p-7">
 			<div aria-hidden="true" class="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gold-main/15 blur-3xl"></div>
 			<p class="relative inline-flex items-center gap-2 rounded-full border border-gold-main/30 bg-gold-main/10 px-3.5 py-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-violet-deep sm:text-xs">
 				<span class="h-1.5 w-1.5 rounded-full bg-gold-main"></span>
@@ -31,28 +25,20 @@ const interestIcons = {
 			<p class="relative mt-5 max-w-2xl text-base leading-7 text-ink/72 sm:text-xl sm:leading-8">{profile.intro}</p>
 
 			<div class="relative mt-6 flex flex-wrap gap-3">
-				<button
-					type="button"
-					data-open-section="proyectos"
-					class="inline-flex justify-center rounded-full bg-gold-main px-5 py-3 text-sm font-semibold text-ink shadow-sm shadow-black/10 transition hover:-translate-y-0.5 hover:bg-gold-soft sm:px-6 sm:text-base"
-				>
+				<Button data-open-section="proyectos" size="md">
 					Ver trabajos
-				</button>
-				<button
-					type="button"
-					data-open-section="contacto"
-					class="inline-flex justify-center rounded-full border border-ink/10 bg-paper px-5 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-gold-main/40 hover:bg-surface sm:px-6 sm:text-base"
-				>
+				</Button>
+				<Button data-open-section="contacto" variant="secondary" size="md">
 					Pedir presupuesto
-				</button>
+				</Button>
 			</div>
 		</div>
 
 		<div class="relative">
-			<div class="absolute inset-0 rotate-6 rounded-4xl bg-linear-to-br from-gold-main/26 via-transparent to-violet-soft/24 blur-sm sm:blur-md"></div>
-			<div class="relative overflow-hidden rounded-4xl border border-ink/8 bg-surface/92 p-5 shadow-lg shadow-black/8 sm:p-6">
+			<div class="absolute inset-0 rotate-6 rounded-panel bg-linear-to-br from-gold-main/26 via-transparent to-violet-soft/24 blur-sm sm:blur-md"></div>
+			<div class="relative overflow-hidden rounded-panel border border-ink/8 bg-surface/92 p-5 shadow-lift sm:p-6">
 				<div class="flex items-center gap-4">
-					<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-violet-deep to-gold-main font-serif text-2xl font-bold text-paper shadow-lg shadow-violet-deep/20">
+					<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-panel bg-linear-to-br from-violet-deep to-gold-main font-serif text-2xl font-bold text-paper shadow-lift">
 						{initials}
 					</div>
 					<div>
@@ -62,19 +48,19 @@ const interestIcons = {
 				</div>
 
 				<div class="mt-5 grid grid-cols-2 gap-3">
-					<div class="rounded-2xl border border-ink/8 bg-paper/80 p-3.5">
+					<div class="rounded-inner border border-ink/8 bg-paper/80 p-3.5">
 						<p class="text-[0.64rem] uppercase tracking-[0.16em] text-violet-deep">Especialidad</p>
 						<p class="mt-1.5 text-sm font-medium text-ink">Webs y landings</p>
 					</div>
-					<div class="rounded-2xl border border-ink/8 bg-paper/80 p-3.5">
+					<div class="rounded-inner border border-ink/8 bg-paper/80 p-3.5">
 						<p class="text-[0.64rem] uppercase tracking-[0.16em] text-violet-deep">Automatización</p>
 						<p class="mt-1.5 text-sm font-medium text-ink">Power Automate</p>
 					</div>
-					<div class="rounded-2xl border border-ink/8 bg-paper/80 p-3.5">
+					<div class="rounded-inner border border-ink/8 bg-paper/80 p-3.5">
 						<p class="text-[0.64rem] uppercase tracking-[0.16em] text-violet-deep">Enfoque</p>
 						<p class="mt-1.5 text-sm font-medium text-ink">Diseño + producto</p>
 					</div>
-					<div class="rounded-2xl border border-gold-main/20 bg-gold-main/10 p-3.5">
+					<div class="rounded-inner border border-gold-main/20 bg-gold-main/10 p-3.5">
 						<p class="text-[0.64rem] uppercase tracking-[0.16em] text-violet-deep">Estado</p>
 						<p class="mt-1.5 inline-flex items-center gap-1.5 text-sm font-medium text-ink">
 							<span class="h-1.5 w-1.5 rounded-full bg-gold-main"></span>
@@ -86,7 +72,7 @@ const interestIcons = {
 		</div>
 	</div>
 
-	<div class="mt-8 rounded-4xl border border-ink/8 bg-surface/90 p-5 shadow-sm shadow-black/5 sm:p-8" data-reveal>
+	<div class="mt-8 rounded-panel border border-ink/8 bg-surface/90 p-5 shadow-soft sm:p-8" data-reveal>
 		<div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
 			<div>
 				<p class="inline-flex items-center gap-2 rounded-full border border-gold-main/25 bg-gold-main/10 px-3 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-violet-deep sm:text-xs sm:tracking-[0.24em]">
@@ -96,21 +82,10 @@ const interestIcons = {
 				<h2 class="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl">{about.title}</h2>
 				<p class="mt-4 text-base leading-7 text-ink/75 sm:text-lg sm:leading-8">{about.lead}</p>
 				{recommendation && (
-					<a
-						href={encodeURI(recommendation.href)}
-						target="_blank"
-						rel="noreferrer"
-						class="mt-5 inline-flex items-center gap-2 rounded-full border border-gold-main/30 bg-gold-main/10 px-4 py-2 text-sm font-semibold text-violet-deep transition hover:-translate-y-0.5 hover:bg-gold-main/20"
-					>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-4 w-4">
-							<path
-								d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 8.7l5.4-.8L12 3Z"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
+					<Button href={encodeURI(recommendation.href)} variant="ghost" class="mt-5">
+						<Icon name="award" class="h-4 w-4" />
 						Ver carta de recomendación
-					</a>
+					</Button>
 				)}
 			</div>
 
@@ -119,14 +94,12 @@ const interestIcons = {
 				<div class="grid gap-3 sm:grid-cols-2">
 					{interests.map((interest, index) => (
 						<article
-							class="group flex gap-3.5 rounded-2xl border border-ink/8 bg-paper/80 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-gold-main/30 hover:shadow-lg hover:shadow-black/8"
+							class="group flex gap-3.5 rounded-inner border border-ink/8 bg-paper/80 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-gold-main/30 hover:shadow-lift"
 							data-reveal
 							style={`animation-delay:${index * 70}ms`}
 						>
-							<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gold-main/20 bg-gold-main/10 text-gold-soft">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5">
-									<path d={interestIcons[interest.icon]} stroke-linecap="round" stroke-linejoin="round" />
-								</svg>
+							<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-inner border border-gold-main/20 bg-gold-main/10 text-gold-soft">
+								<Icon name={interest.icon} />
 							</div>
 							<div>
 								<h3 class="text-sm font-semibold text-ink sm:text-base">{interest.title}</h3>
@@ -141,7 +114,7 @@ const interestIcons = {
 
 	<div class="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
 		{heroStats.map((stat) => (
-			<div class="rounded-3xl border border-ink/8 bg-paper/82 p-4 shadow-sm shadow-black/5 sm:p-5">
+			<div class="rounded-card border border-ink/8 bg-paper/82 p-4 shadow-soft sm:p-5">
 				<p class="font-serif text-3xl font-bold text-gold-main sm:text-4xl">{stat.value}</p>
 				<p class="mt-2 text-sm text-ink/62">{stat.label}</p>
 			</div>

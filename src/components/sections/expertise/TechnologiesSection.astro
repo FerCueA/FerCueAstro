@@ -1,85 +1,66 @@
 ---
 import { skillGroups } from '../../../data/portfolio';
-import SectionIntro from '../../ui/SectionIntro.astro';
+import Badge from '../../ui/Badge.astro';
+import Icon from '../../ui/Icon.astro';
+import SectionShell from '../../ui/SectionShell.astro';
+import Tag from '../../ui/Tag.astro';
 
 const totalItems = skillGroups.reduce((acc, group) => acc + group.items.length, 0);
 const allItems = skillGroups.flatMap((group) => group.items);
-
-const iconPaths = {
-	code: 'M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14',
-	server:
-		'M4 5.5C4 4.7 7.6 4 12 4s8 .7 8 1.5S16.4 7 12 7 4 6.3 4 5.5Zm0 6C4 10.7 7.6 10 12 10s8 .7 8 1.5S16.4 13 12 13 4 12.3 4 11.5Zm0 6C4 16.7 7.6 16 12 16s8 .7 8 1.5S16.4 19 12 19 4 18.3 4 17.5ZM8 5.5h.01M8 11.5h.01M8 17.5h.01',
-	bolt: 'M13 3 5 13h6l-1 8 8-10h-6l1-8Z',
-	bot: 'M12 3v3M7 9h10a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-4a3 3 0 0 1 3-3Zm2 5h.01M15 14h.01M9 18v2M15 18v2',
-	clipboard: 'M9 4h6v3H9zM7 5H5v15h14V5h-2M9 12h6M9 16h4',
-	database:
-		'M12 4c-4.4 0-8 1.3-8 3v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7c0-1.7-3.6-3-8-3Zm0 0c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3Zm-8 8c0 1.7 3.6 3 8 3s8-1.3 8-3M4 17c0 1.7 3.6 3 8 3s8-1.3 8-3',
-	tool: 'm14.7 6.3 3 3M5 19l3.5-1 9.2-9.2a2.1 2.1 0 0 0-3-3L5.5 15 5 19Z',
-} as const;
 ---
 
-<section id="tecnologias" class="py-10 sm:py-12 lg:py-16">
-	<div class="rounded-4xl border border-ink/8 bg-surface/90 p-5 shadow-sm shadow-black/5 sm:bg-surface/88 sm:p-8 sm:backdrop-blur-xl">
-		<div class="mb-6 flex flex-col gap-4 sm:mb-8 sm:gap-5 lg:flex-row lg:items-end lg:justify-between">
-			<div class="lg:max-w-3xl">
-				<SectionIntro
-					index="04"
-					kicker="Tecnologías"
-					title="Stack, plataformas y herramientas"
-					description="El stack que uso no es tendencia: es lo que me permite entregar proyectos rápidos, mantenibles y bien acabados."
-				/>
-			</div>
-			<div class="flex flex-wrap items-center gap-2.5 sm:gap-3 lg:pb-8">
-				<span class="rounded-full border border-gold-main/20 bg-gold-main/10 px-3 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.14em] text-violet-deep sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.22em]">
-					{skillGroups.length} bloques
-				</span>
-				<span class="rounded-full border border-violet-main/20 bg-violet-soft/35 px-3 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.14em] text-violet-deep sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.22em]">
-					{totalItems} herramientas
-				</span>
-			</div>
-		</div>
+<SectionShell
+	id="tecnologias"
+	index="04"
+	kicker="Tecnologías"
+	title="Stack, plataformas y herramientas"
+	description="El stack que uso no es tendencia: es lo que me permite entregar proyectos rápidos, mantenibles y bien acabados."
+>
+	<Badge slot="badges" variant="gold">
+		{skillGroups.length} bloques
+	</Badge>
+	<Badge slot="badges" variant="violet">
+		{totalItems} herramientas
+	</Badge>
 
-		<div
-			class="relative mb-6 overflow-hidden rounded-2xl border border-ink/8 bg-paper/70 py-3.5 sm:mb-8 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]"
-			aria-hidden="true"
-		>
-			<div class="animate-marquee flex w-max gap-3">
-				{[...allItems, ...allItems].map((item) => (
-					<span class="rounded-full border border-violet-main/16 bg-violet-soft/40 px-3.5 py-1.5 text-sm font-medium text-violet-deep">
-						{item}
-					</span>
-				))}
-			</div>
-		</div>
-
-		<div class="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-			{skillGroups.map((group, index) => (
-				<article
-					class="flex flex-col rounded-3xl border border-ink/8 bg-paper/85 p-4 shadow-sm shadow-black/5 transition duration-300 hover:-translate-y-0.5 hover:border-gold-main/30 hover:shadow-lg hover:shadow-black/8 sm:p-6"
-					data-reveal
-					style={`animation-delay:${index * 70}ms`}
-				>
-					<div class="flex items-start gap-4">
-						<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-gold-main/20 bg-gold-main/10 text-gold-soft">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-6 w-6">
-								<path d={iconPaths[group.icon]} stroke-linecap="round" stroke-linejoin="round"></path>
-							</svg>
-						</div>
-						<div>
-							<p class="text-[0.72rem] uppercase tracking-[0.16em] text-gold-soft sm:text-sm sm:tracking-[0.22em]">{group.title}</p>
-							<p class="mt-1 text-sm leading-6 text-ink/60">{group.description}</p>
-						</div>
-					</div>
-
-					<ul class="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3">
-						{group.items.map((item) => (
-							<li class="rounded-2xl border border-violet-main/14 bg-violet-soft/38 px-3 py-2 text-sm font-medium text-violet-deep sm:px-3.5">
-								{item}
-							</li>
-						))}
-					</ul>
-				</article>
+	<div
+		class="relative mb-6 overflow-hidden rounded-inner border border-ink/8 bg-paper/70 py-3.5 sm:mb-8 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]"
+		aria-hidden="true"
+	>
+		<div class="animate-marquee flex w-max gap-3">
+			{[...allItems, ...allItems].map((item) => (
+				<Tag>{item}</Tag>
 			))}
 		</div>
 	</div>
-</section>
+
+	<div class="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+		{skillGroups.map((group, index) => (
+			<article
+				class="flex flex-col rounded-card border border-ink/8 bg-paper/85 p-4 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-gold-main/30 hover:shadow-lift sm:p-6"
+				data-reveal
+				style={`animation-delay:${index * 70}ms`}
+			>
+				<div class="flex items-start gap-4">
+					<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-inner border border-gold-main/20 bg-gold-main/10 text-gold-soft">
+						<Icon name={group.icon} class="h-6 w-6" />
+					</div>
+					<div>
+						<p class="text-[0.72rem] uppercase tracking-[0.16em] text-gold-soft sm:text-sm sm:tracking-[0.22em]">{group.title}</p>
+						<p class="mt-1 text-sm leading-6 text-ink/60">{group.description}</p>
+					</div>
+				</div>
+
+				<ul class="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3">
+					{group.items.map((item) => (
+						<li>
+							<Tag shape="soft" class="w-full justify-center">
+								{item}
+							</Tag>
+						</li>
+					))}
+				</ul>
+			</article>
+		))}
+	</div>
+</SectionShell>

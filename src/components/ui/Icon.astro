@@ -1,0 +1,103 @@
+---
+/**
+ * Centralised icon set. All icons come from this single source so we never
+ * mix icon libraries or duplicate path data across sections.
+ *
+ * - Stroke icons (most): `viewBox="0 0 24 24"`, drawn with `currentColor`.
+ * - Fill icons (brand/social): rendered with `fill="currentColor"`.
+ */
+type IconName =
+	// UI / sections
+	| 'monitor'
+	| 'server'
+	| 'brand'
+	| 'custom'
+	| 'code'
+	| 'bolt'
+	| 'bot'
+	| 'clipboard'
+	| 'database'
+	| 'tool'
+	| 'check'
+	| 'arrowRight'
+	| 'award'
+	// Interests
+	| 'chip'
+	| 'spark'
+	| 'mountain'
+	| 'run'
+	| 'hike'
+	// Social
+	| 'email'
+	| 'linkedin'
+	| 'github'
+	| 'whatsapp';
+
+interface Props {
+	name: IconName;
+	class?: string;
+	strokeWidth?: number;
+}
+
+const { name, class: className = 'h-5 w-5', strokeWidth = 1.7 } = Astro.props;
+
+const strokeIcons: Partial<Record<IconName, { viewBox?: string; path: string }>> = {
+	monitor: {
+		path: 'M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5h-4.25L14 20h-4l.75-4H6.5A2.5 2.5 0 0 1 4 13.5v-7Z',
+	},
+	server: {
+		path: 'M5 6.5C5 5.12 8.13 4 12 4s7 1.12 7 2.5S15.87 9 12 9 5 7.88 5 6.5Zm0 5C5 10.12 8.13 9 12 9s7 1.12 7 2.5-3.13 2.5-7 2.5-7-1.12-7-2.5Zm0 5C5 15.12 8.13 14 12 14s7 1.12 7 2.5S15.87 19 12 19s-7-1.12-7-2.5ZM8 6.5h.01M8 11.5h.01M8 16.5h.01',
+	},
+	brand: { path: 'M12 4 14.6 9.2 20 10l-4 3.9.94 5.6L12 16.9 7.06 19.5 8 13.9 4 10l5.4-.8L12 4Z' },
+	custom: { path: 'M12 5v14M5 12h14' },
+	code: { path: 'M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14' },
+	bolt: { path: 'M13 3 5 13h6l-1 8 8-10h-6l1-8Z' },
+	bot: { path: 'M12 3v3M7 9h10a3 3 0 0 1 3 3v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-4a3 3 0 0 1 3-3Zm2 5h.01M15 14h.01M9 18v2M15 18v2' },
+	clipboard: { path: 'M9 4h6v3H9zM7 5H5v15h14V5h-2M9 12h6M9 16h4' },
+	database: {
+		path: 'M12 4c-4.4 0-8 1.3-8 3v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7c0-1.7-3.6-3-8-3Zm0 0c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3Zm-8 8c0 1.7 3.6 3 8 3s8-1.3 8-3M4 17c0 1.7 3.6 3 8 3s8-1.3 8-3',
+	},
+	tool: { path: 'm14.7 6.3 3 3M5 19l3.5-1 9.2-9.2a2.1 2.1 0 0 0-3-3L5.5 15 5 19Z' },
+	check: { path: 'm4.5 10.5 3.2 3.2 7.8-8' },
+	arrowRight: { viewBox: '0 0 20 20', path: 'M4.166 10h11.667m0 0-4.167-4.167M15.833 10l-4.167 4.167' },
+	award: {
+		path: 'M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 8.7l5.4-.8L12 3Z M8.5 17.5 7 21l5-2 5 2-1.5-3.5',
+	},
+	chip: { path: 'M7 7h10v10H7zM9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2' },
+	spark: { path: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z' },
+	mountain: { path: 'M3 18l6-9 4 5.5 2.5-3L21 18H3ZM13 7l1.5-2.5L16 7' },
+	run: { path: 'M13.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM9 22l2.5-6-3-2.5 1-5 3 2 3 1M6 13l2-3 3-1' },
+	hike: { path: 'M13.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM8 21l3-7 3 2v5M16 21l-2-6 2-4M11 9l3-2 3 3' },
+};
+
+const fillIcons: Partial<Record<IconName, string>> = {
+	email:
+		'M3.75 5.25h12.5A1.75 1.75 0 0 1 18 7v6a1.75 1.75 0 0 1-1.75 1.75H3.75A1.75 1.75 0 0 1 2 13V7a1.75 1.75 0 0 1 1.75-1.75Zm0 1.5v.16l6.25 4.37 6.25-4.37v-.16H3.75Zm12.5 6.5V8.73l-5.82 4.07a.75.75 0 0 1-.86 0L3.75 8.73v4.52c0 .14.11.25.25.25h12c.14 0 .25-.11.25-.25Z',
+	linkedin:
+		'M4.5 3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM3.5 7h2V16h-2V7Zm4 0h1.92v1.23h.03c.27-.5.93-1.23 1.91-1.23 2.04 0 2.42 1.35 2.42 3.1V16h-2v-4.36c0-1.04-.02-2.38-1.45-2.38-1.46 0-1.68 1.14-1.68 2.3V16h-2V7Z',
+	github:
+		'M10 2.5a7.5 7.5 0 0 0-2.37 14.62c.38.07.52-.17.52-.38v-1.35c-2.11.46-2.56-.89-2.56-.89-.35-.87-.84-1.1-.84-1.1-.69-.47.05-.46.05-.46.76.05 1.17.79 1.17.79.68 1.16 1.78.83 2.22.64.07-.49.27-.83.49-1.03-1.68-.19-3.44-.84-3.44-3.73 0-.83.3-1.5.79-2.03-.08-.19-.34-.96.07-2 0 0 .64-.2 2.09.78a7.19 7.19 0 0 1 3.8 0c1.45-.98 2.09-.78 2.09-.78.41 1.04.15 1.81.07 2 .49.53.79 1.2.79 2.03 0 2.9-1.76 3.54-3.45 3.73.28.24.52.7.52 1.42v2.11c0 .21.14.46.52.38A7.5 7.5 0 0 0 10 2.5Z',
+	whatsapp:
+		'M10.01 2.5a7.48 7.48 0 0 0-6.45 11.28L2.5 17.5l3.83-1.01A7.5 7.5 0 1 0 10.01 2.5Zm0 13.5a6 6 0 0 1-3.05-.83l-.22-.13-2.28.6.61-2.22-.14-.23a6 6 0 1 1 5.08 2.81Zm3.29-4.48c-.18-.09-1.08-.53-1.24-.59-.17-.06-.29-.09-.41.09-.12.18-.47.58-.58.7-.11.12-.21.13-.39.04-.18-.09-.75-.28-1.43-.89-.53-.47-.89-1.05-.99-1.23-.1-.18-.01-.27.08-.36.08-.08.18-.21.27-.31.09-.11.12-.18.18-.3.06-.12.03-.23-.02-.32-.05-.09-.41-.99-.56-1.35-.15-.36-.31-.31-.41-.31h-.35c-.12 0-.32.05-.49.23-.17.18-.64.63-.64 1.55s.66 1.81.75 1.94c.09.12 1.29 1.97 3.13 2.77.44.19.78.3 1.05.38.44.14.85.12 1.17.07.36-.05 1.08-.44 1.23-.87.15-.43.15-.79.11-.87-.05-.08-.17-.12-.35-.21Z',
+};
+
+const fill = fillIcons[name];
+const stroke = strokeIcons[name];
+---
+
+{fill ? (
+	<svg viewBox="0 0 20 20" fill="currentColor" class={className} aria-hidden="true">
+		<path d={fill} />
+	</svg>
+) : (
+	<svg
+		viewBox={stroke?.viewBox ?? '0 0 24 24'}
+		fill="none"
+		stroke="currentColor"
+		stroke-width={strokeWidth}
+		class={className}
+		aria-hidden="true"
+	>
+		<path d={stroke?.path ?? ''} stroke-linecap="round" stroke-linejoin="round" />
+	</svg>
+)}

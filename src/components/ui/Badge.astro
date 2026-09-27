@@ -1,0 +1,30 @@
+---
+/**
+ * Small pill used for section meta ("4 servicios"), tags and statuses.
+ * Keep all pill styling here instead of repeating border/background classes.
+ */
+interface Props {
+	variant?: 'gold' | 'violet' | 'neutral';
+	size?: 'sm' | 'md';
+	class?: string;
+}
+
+const { variant = 'gold', size = 'md', class: className } = Astro.props;
+
+const variants = {
+	gold: 'border-gold-main/20 bg-gold-main/10 text-violet-deep',
+	violet: 'border-violet-main/20 bg-violet-soft/35 text-violet-deep',
+	neutral: 'border-ink/10 bg-surface text-ink/60',
+};
+
+const sizes = {
+	sm: 'px-3 py-1 text-[0.62rem] tracking-[0.16em]',
+	md: 'px-3 py-1.5 text-[0.68rem] tracking-[0.14em] sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.22em]',
+};
+---
+
+<span
+	class:list={['inline-flex items-center gap-1.5 rounded-full border font-medium uppercase', variants[variant], sizes[size], className]}
+>
+	<slot />
+</span>
