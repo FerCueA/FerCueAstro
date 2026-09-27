@@ -9,7 +9,6 @@ const contactStyles: Record<string, string> = {
 	LinkedIn: 'bg-[#0a66c2]/12 text-ink hover:bg-[#0a66c2]/18 border-[#0a66c2]/25',
 	GitHub: 'bg-violet-main/14 text-ink hover:bg-violet-main/20 border-violet-main/24',
 	WhatsApp: 'bg-[#25d366]/14 text-ink hover:bg-[#25d366]/20 border-[#25d366]/26',
-	Instagram: 'bg-[#dd2a7b]/12 text-ink hover:bg-[#dd2a7b]/18 border-[#dd2a7b]/24',
 };
 
 const contactIcons: Record<string, string> = {
@@ -21,8 +20,6 @@ const contactIcons: Record<string, string> = {
 		'M10 2.5a7.5 7.5 0 0 0-2.37 14.62c.38.07.52-.17.52-.38v-1.35c-2.11.46-2.56-.89-2.56-.89-.35-.87-.84-1.1-.84-1.1-.69-.47.05-.46.05-.46.76.05 1.17.79 1.17.79.68 1.16 1.78.83 2.22.64.07-.49.27-.83.49-1.03-1.68-.19-3.44-.84-3.44-3.73 0-.83.3-1.5.79-2.03-.08-.19-.34-.96.07-2 0 0 .64-.2 2.09.78a7.19 7.19 0 0 1 3.8 0c1.45-.98 2.09-.78 2.09-.78.41 1.04.15 1.81.07 2 .49.53.79 1.2.79 2.03 0 2.9-1.76 3.54-3.45 3.73.28.24.52.7.52 1.42v2.11c0 .21.14.46.52.38A7.5 7.5 0 0 0 10 2.5Z',
 	WhatsApp:
 		'M10.01 2.5a7.48 7.48 0 0 0-6.45 11.28L2.5 17.5l3.83-1.01A7.5 7.5 0 1 0 10.01 2.5Zm0 13.5a6 6 0 0 1-3.05-.83l-.22-.13-2.28.6.61-2.22-.14-.23a6 6 0 1 1 5.08 2.81Zm3.29-4.48c-.18-.09-1.08-.53-1.24-.59-.17-.06-.29-.09-.41.09-.12.18-.47.58-.58.7-.11.12-.21.13-.39.04-.18-.09-.75-.28-1.43-.89-.53-.47-.89-1.05-.99-1.23-.1-.18-.01-.27.08-.36.08-.08.18-.21.27-.31.09-.11.12-.18.18-.3.06-.12.03-.23-.02-.32-.05-.09-.41-.99-.56-1.35-.15-.36-.31-.31-.41-.31h-.35c-.12 0-.32.05-.49.23-.17.18-.64.63-.64 1.55s.66 1.81.75 1.94c.09.12 1.29 1.97 3.13 2.77.44.19.78.3 1.05.38.44.14.85.12 1.17.07.36-.05 1.08-.44 1.23-.87.15-.43.15-.79.11-.87-.05-.08-.17-.12-.35-.21Z',
-	Instagram:
-		'M6 2.75h8A3.25 3.25 0 0 1 17.25 6v8A3.25 3.25 0 0 1 14 17.25H6A3.25 3.25 0 0 1 2.75 14V6A3.25 3.25 0 0 1 6 2.75Zm0 1.5A1.75 1.75 0 0 0 4.25 6v8c0 .97.78 1.75 1.75 1.75h8c.97 0 1.75-.78 1.75-1.75V6A1.75 1.75 0 0 0 14 4.25H6Zm8.38 1.12a.88.88 0 1 1 0 1.76.88.88 0 0 1 0-1.76ZM10 6.5A3.5 3.5 0 1 1 6.5 10 3.5 3.5 0 0 1 10 6.5Zm0 1.5A2 2 0 1 0 12 10a2 2 0 0 0-2-2Z',
 };
 ---
 
@@ -30,6 +27,7 @@ const contactIcons: Record<string, string> = {
 	<div class="grid gap-7 rounded-4xl border border-ink/8 bg-linear-to-br from-violet-soft/35 via-surface/95 to-gold-soft/25 p-5 shadow-sm shadow-black/5 sm:gap-8 sm:p-8 sm:backdrop-blur-xl lg:grid-cols-[0.95fr_1.05fr]">
 		<div>
 			<SectionIntro
+				index="07"
 				kicker="Contacto"
 				title="Cuéntame tu idea y la aterrizamos"
 				description="Sin formularios ni intermediarios. Escríbeme por el canal que uses habitualmente y hablamos de lo que necesitas."

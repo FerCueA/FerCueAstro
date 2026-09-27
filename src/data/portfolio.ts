@@ -73,7 +73,7 @@ export const navigationLinks = [
 ];
 
 export const hubSections = [
-	{ id: 'perfil', label: 'Perfil' },
+	{ id: 'perfil', label: 'Conóceme' },
 	...navigationLinks.map((link) => ({ id: link.href.replace('#', ''), label: link.label })),
 ];
 
@@ -81,7 +81,43 @@ export const heroStats = [
 	{ value: '3', label: 'Proyectos reales mostrados en el portfolio' },
 	{ value: '4', label: 'Servicios listos para contratar' },
 	{ value: '22', label: 'Certificados y formación completada' },
-	{ value: '5', label: 'Canales de contacto y presencia profesional' },
+	{ value: '4', label: 'Canales de contacto y presencia profesional' },
+];
+
+export interface Interest {
+	title: string;
+	description: string;
+	icon: 'chip' | 'spark' | 'mountain' | 'flag';
+}
+
+export const about = {
+	heading: 'Conóceme',
+	title: 'Un poco sobre mí',
+	lead: 'Soy Aleixo Fernández Cuevas, desarrollador web frontend y full stack. Me gusta crear cosas que funcionan y se ven bien, y no parar de aprender.',
+	body: 'Disfruto convirtiendo ideas en webs y aplicaciones útiles: cuidando el detalle, el rendimiento y que todo se entienda a la primera. Trabajo igual de cómodo en el frontend que en el backend, y me motiva resolver problemas reales con tecnología.',
+};
+
+export const interests: Interest[] = [
+	{
+		title: 'Tecnología',
+		description: 'Me encanta trastear con herramientas y cacharrear con lo que voy aprendiendo.',
+		icon: 'chip',
+	},
+	{
+		title: 'Siempre a la última',
+		description: 'Me gusta estar al día de lo último en desarrollo, producto y tendencias.',
+		icon: 'spark',
+	},
+	{
+		title: 'Trail',
+		description: 'Desconectar en la montaña es mi forma de recargar ideas y energía.',
+		icon: 'mountain',
+	},
+	{
+		title: 'Carreras',
+		description: 'Competir me da disciplina y constancia, dentro y fuera del código.',
+		icon: 'flag',
+	},
 ];
 
 export const projects: Project[] = [
@@ -392,10 +428,5 @@ export const contactLinks: ContactLink[] = [
 		label: 'WhatsApp',
 		value: '+34 628 23 07 16',
 		href: 'https://wa.me/34628230716',
-	},
-	{
-		label: 'Instagram',
-		value: 'instagram.com/aleixofdezcuevas',
-		href: 'https://www.instagram.com/aleixofdezcuevas/',
 	},
 ];

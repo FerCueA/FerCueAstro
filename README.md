@@ -28,7 +28,8 @@ Portafolio web construido con `Astro` y `Tailwind CSS`, planteado como un hub vi
 ## 2. Qué incluye
 
 - Navegación tipo hub con paneles dinámicos.
-- Secciones organizadas por dominio: perfil, experiencia, proyectos, servicios, tecnologías, proceso, certificados y contacto.
+- Secciones organizadas por dominio: conóceme, experiencia, proyectos, servicios, tecnologías, proceso, certificados y contacto.
+- Bloque "Conóceme" con presentación personal e intereses (tecnología, estar a la última, trail y carreras).
 - Experiencia profesional en formato timeline y sección de proceso de trabajo.
 - Diseño responsive con prioridad mobile-first.
 - Transiciones visuales y animaciones de aparición al hacer scroll, con fallback para dispositivos pequeños o usuarios con `reduced motion`.
