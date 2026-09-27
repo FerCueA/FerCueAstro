@@ -75,7 +75,6 @@ npm run preview   # servir localmente la build generada
 src/
   components/
     front/PortfolioHub.astro
-    layout/BackgroundGlow.astro
     sections/
       profile/        # Conóceme
       experience/     # Experiencia (timeline)

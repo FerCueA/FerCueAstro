@@ -1,289 +1,273 @@
 # Design System
 
-Sistema visual de **FerCueAstro**. Es la referencia oficial para cualquier cambio de UI, humano o generado por IA. Si algo no está aquí, reutiliza lo existente antes de inventar.
+Sistema visual de **FerCueAstro**. Referencia obligatoria para cualquier cambio de UI, humano o generado por IA. Si algo no está aquí, reutiliza lo existente antes de inventar.
 
 ## Stack
 
-- **Framework:** [Astro](https://astro.build) 6 (salida estática, `output: static`).
-- **Estilos:** [Tailwind CSS](https://tailwindcss.com) 4 vía `@tailwindcss/vite`.
-- **Lenguaje:** TypeScript en modo `strict`.
-- **Fuente de tokens:** `src/styles/global.css` (bloque `@theme`).
+- **Framework:** Astro 6 (salida estática).
+- **Estilos:** Tailwind CSS 4 vía `@tailwindcss/vite`.
+- **Lenguaje:** TypeScript `strict`.
+- **Tokens:** `src/styles/global.css` (bloque `@theme`).
 - **Componentes base:** `src/components/ui/`.
-- **Datos/contenido:** `src/data/portfolio.ts` (fuente única).
+- **Contenido:** `src/data/portfolio.ts`.
+- **Dirección:** editorial, cálida y neutra. Jerarquía por tipografía y espacio, no por cajas.
 
 ---
 
 ## Design Principles
 
-1. **Consistencia antes que novedad.** Reutiliza tokens y componentes existentes. No introduzcas colores, radios, sombras o patrones nuevos sin una razón clara.
-2. **Mobile-first.** Todo se construye primero para móvil y se amplía con `sm:`, `lg:`…
-3. **Contenido centralizado.** Los textos y datos viven en `src/data/portfolio.ts`, no en los componentes.
-4. **Componentes pequeños y reutilizables.** Cada patrón repetido debe convertirse en un componente en `ui/`.
-5. **Accesibilidad por defecto.** Estados de foco visibles, semántica correcta, `prefers-reduced-motion` respetado.
-6. **Identidad cálida y editorial.** Fondo papel con degradado suave, acentos dorado/violeta, tipografía serif para títulos y sans para cuerpo.
-7. **Sin estilos inline salvo animaciones escalonadas.** El resto se resuelve con clases/tokens.
+1. **Jerarquía > decoración.** Tamaño, peso y contraste definen la importancia; no los recuadros.
+2. **Espacio > cajas.** Separa con whitespace y hairlines antes de crear un contenedor.
+3. **Tipografía > bordes.** Usa la escala tipográfica y el color de texto; evita bordes decorativos.
+4. **Estructura > cards.** Listas, filas y columnas antes que grids de tarjetas.
+5. **Consistencia > variedad.** Reutiliza tokens y componentes.
+6. **Mobile-first** y accesible por defecto (`prefers-reduced-motion`, foco visible, semántica).
+7. **El color se usa con intención.** Neutros como base; el dorado solo para acciones/énfasis.
 
 ---
 
 ## Colors
 
-Definidos como variables del tema en `global.css` (`@theme`) y usados como clases de Tailwind (`bg-…`, `text-…`, `border-…`) con opacidad (`/10`, `/70`…).
+Definidos en `@theme` (`global.css`). Se usan como clases (`bg-*`, `text-*`, `border-*`).
 
-| Rol              | Token                              | Valor                                                                           | Uso                                   |
-| ---------------- | ---------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------- |
-| Primary / accent | `--color-gold-main`                | `#c99b45`                                                                       | CTAs, cifras, acentos, foco           |
-| Primary soft     | `--color-gold-soft`                | `#ecd9aa`                                                                       | Fondos suaves, hover de CTA           |
-| Secondary        | `--color-violet-deep`              | `#5f4b78`                                                                       | Texto de apoyo, etiquetas             |
-| Secondary mid    | `--color-violet-main`              | `#8c6f9d`                                                                       | Acentos, líneas                       |
-| Secondary soft   | `--color-violet-soft`              | `#dccfe4`                                                                       | Fondos de chips/cards                 |
-| Background       | `--color-paper`                    | `#f7f3eb`                                                                       | Fondo base (con degradado en `:root`) |
-| Surface          | `--color-surface`                  | `#fffaf2`                                                                       | Paneles y tarjetas                    |
-| Text             | `--color-ink`                      | `#1f2433`                                                                       | Texto principal                       |
-| Muted text       | `--color-ink` + opacidad           | `text-ink/60` – `text-ink/72`                                                   | Texto secundario                      |
-| Borders          | `--color-ink` / acentos + opacidad | `border-ink/8`, `border-ink/10`, `border-gold-main/20`, `border-violet-main/16` | Bordes por defecto                    |
-| Success          | `--color-success`                  | `#3f8f5f`                                                                       | Reservado (sin uso actual)            |
-| Warning          | `--color-warning`                  | `#c98a2b`                                                                       | Reservado (sin uso actual)            |
-| Error            | `--color-error`                    | `#c2493f`                                                                       | Reservado (sin uso actual)            |
-| Info             | `--color-info`                     | `#4b6fb0`                                                                       | Reservado (sin uso actual)            |
+| Rol              | Token                   | Valor                | Uso                                                      |
+| ---------------- | ----------------------- | -------------------- | -------------------------------------------------------- |
+| Background       | `--color-paper`         | `#f7f3eb`            | Fondo de página (con un radial muy tenue arriba-derecha) |
+| Surface          | `--color-surface`       | `#fffdf9`            | Superficie elevada real (tarjetas de proyecto, mockup)   |
+| Surface muted    | `--color-surface-muted` | `#efe9df`            | Superficie secundaria sutil (mockups, chips)             |
+| Text primary     | `--color-ink`           | `#1f2433`            | Títulos y texto principal                                |
+| Text secondary   | `--color-ink-soft`      | `#454b5c`            | Cuerpo de texto                                          |
+| Text muted       | `--color-ink-muted`     | `#737a8a`            | Metadata, labels, notas                                  |
+| Border / line    | `--color-line`          | `rgba(31,36,51,.12)` | Hairlines y bordes                                       |
+| Primary accent   | `--color-gold-main`     | `#c08a2e`            | CTA primario, cifras, enlaces activos                    |
+| Primary hover    | `--color-gold-soft`     | `#e6d3a8`            | Hover del CTA primario                                   |
+| Secondary accent | `--color-violet-deep`   | `#56446a`            | Texto de apoyo, enlaces ghost                            |
+| Secondary mid    | `--color-violet-main`   | `#8c6f9d`            | Detalles (líneas de mockup)                              |
+| Secondary soft   | `--color-violet-soft`   | `#e5dced`            | Fondos de acento suaves                                  |
+| Success          | `--color-success`       | `#3f8f5f`            | Reservado                                                |
+| Warning          | `--color-warning`       | `#c98a2b`            | Reservado                                                |
+| Error            | `--color-error`         | `#bf4a3f`            | Reservado                                                |
+| Info             | `--color-info`          | `#4b6fb0`            | Reservado                                                |
 
-> Los colores de estado están definidos como tokens para futuros formularios/alertas, pero **hoy no se usan**. Si necesitas un estado, usa estos tokens en lugar de crear un color nuevo.
+Regla: **un solo acento por pantalla**. No uses dorado para decorar; resérvalo para acciones y cifras.
 
 ---
 
 ## Typography
 
-- **Sans (cuerpo, UI):** `--font-sans` → `'Space Grotesk'`.
-- **Serif (títulos):** `--font-serif` → `'Fraunces'`.
+- **Sans (cuerpo/UI):** `Space Grotesk`.
+- **Serif (display/títulos):** `Fraunces`.
 
-| Elemento       | Clases de referencia                                             | Tamaño        | Peso    | Line-height |
-| -------------- | ---------------------------------------------------------------- | ------------- | ------- | ----------- |
-| H1 (hub)       | `font-serif text-[clamp(1.9rem,6.2vw,5.1rem)] leading-none`      | fluido        | normal  | `none`      |
-| H1 (Conóceme)  | `font-serif text-[clamp(2rem,7.5vw,4rem)] leading-[1.02]`        | fluido        | normal  | `1.02`      |
-| H2 (sección)   | `font-serif text-3xl sm:text-4xl lg:text-[2.6rem] leading-tight` | 1.875→2.6rem  | normal  | `tight`     |
-| H3 (card)      | `text-lg sm:text-xl font-semibold`                               | 1.125→1.25rem | 600     | heredado    |
-| Body           | `text-sm sm:text-base leading-6 sm:leading-7 text-ink/70`        | 0.875→1rem    | 400     | 1.5–1.75    |
-| Lead           | `text-base sm:text-lg leading-7 sm:leading-8 text-ink/75`        | 1→1.125rem    | 400     | 1.75–2      |
-| Small          | `text-xs leading-5 text-ink/65`                                  | 0.75rem       | 400     | 1.25        |
-| Label / kicker | `uppercase tracking-[0.14em..0.24em] text-violet-deep`           | 0.62–0.72rem  | 500–600 | —           |
-| Button         | `text-sm font-semibold` (via `Button.astro`)                     | 0.875rem      | 600     | —           |
+| Nivel           | Clases                                                           | Tamaño        | Peso | Line-height |
+| --------------- | ---------------------------------------------------------------- | ------------- | ---- | ----------- |
+| Display (hub)   | `font-serif text-[clamp(1.9rem,6.2vw,5.1rem)] leading-[0.98]`    | fluido        | 400  | 0.98        |
+| H1 (Conóceme)   | `font-serif text-[clamp(2.1rem,6vw,3.4rem)] leading-[1.05]`      | fluido        | 400  | 1.05        |
+| H2 (sección)    | `font-serif text-3xl sm:text-4xl leading-[1.1]`                  | 1.875–2.25rem | 400  | 1.1         |
+| H3 (lista/card) | `font-serif text-xl sm:text-2xl leading-snug`                    | 1.25–1.5rem   | 400  | snug        |
+| Body            | `text-sm sm:text-base leading-6 sm:leading-7 text-ink-soft`      | 0.875–1rem    | 400  | 1.5–1.75    |
+| Small           | `text-sm leading-6 text-ink-soft`                                | 0.875rem      | 400  | 1.5         |
+| Metadata        | `text-xs text-ink-muted`                                         | 0.75rem       | 400  | 1.5         |
+| Label/eyebrow   | `text-xs font-medium uppercase tracking-[0.18em] text-ink-muted` | 0.75rem       | 500  | —           |
+| Botón           | `text-sm font-medium` (sm) / `text-sm sm:text-base` (md)         | 0.875–1rem    | 500  | —           |
+
+Reglas:
+
+- Los títulos usan **serif**; el resto **sans**. No mezcles.
+- Solo hay **dos pesos** reales: 400/500. Usa `font-semibold` con moderación (títulos de item), nunca para todo.
+- Los párrafos largos se limitan con `max-w-xl` / `max-w-2xl` / `max-w-md`.
+- Eyebrows (uppercase + tracking) se usan **poco**: índice, kicker de sección y algún label.
 
 ---
 
 ## Spacing
 
-Se usa la escala por defecto de Tailwind (base `--spacing: 0.25rem`). Reglas:
+Escala por defecto de Tailwind (`--spacing: 0.25rem`):
 
-- **Ritmo vertical de sección:** `py-10 sm:py-12 lg:py-16`.
-- **Padding de panel:** `p-5 sm:p-8`.
-- **Padding de tarjeta:** `p-4 sm:p-5` (cards de contenido) / `p-4 sm:p-6` (cards de grid).
-- **Gaps habituales:** `gap-3`, `gap-4`, `gap-5`, `gap-6`, `gap-8`.
-- **Separación dentro de tarjeta:** `mt-2.5` / `mt-3` / `mt-4` / `mt-5`.
+- **Ritmo de sección:** `py-12 sm:py-16 lg:py-20`.
+- **Separación cabecera→contenido:** `pt-9 sm:pt-12`.
+- **Filas de lista:** `py-5` (contacto), `py-9` (servicios), `py-4` (certificados).
+- **Gaps:** `gap-6`, `gap-x-12`, `gap-y-10`.
+- **Dentro de bloque:** `mt-1`…`mt-6`.
 
-Evita valores fuera de la escala (p. ej. `p-[13px]`) salvo clamp/medidas de layout justificadas.
+Evita valores fuera de escala salvo `clamp()` tipográfico o medidas de layout justificadas.
 
 ---
 
 ## Layout
 
-- **Layout raíz:** `MainLayout.astro` → `<body class="text-ink">` con `BackgroundGlow` y `<main>`.
-- **Hub:** `PortfolioHub.astro` centra el contenido en `max-w-300` (1200px) y `min-h-[calc(100vh-2rem)]`.
-- **Panel de sección:** `SectionShell.astro` (cabecera + cuerpo).
-- **Grids:**
-  - Tarjetas: `sm:grid-cols-2 lg:grid-cols-3` (o `xl:grid-cols-4` en stats).
-  - Bloque mixto (servicios): `lg:grid-cols-12` con `col-span` por índice.
-- **Contenedores de texto:** `max-w-3xl` (intro), `max-w-2xl` (párrafos).
+- **Raíz:** `MainLayout.astro` (fondo `paper`, sin capas decorativas).
+- **Hub:** `max-w-[1100px]`, hero a pantalla completa con hairline inferior.
+- **Secciones:** `SectionShell` → `border-t` superior + grid de cabecera `[minmax(0,1fr)_minmax(0,20rem)]`.
+- **Grids de datos:** 2 columnas para listas largas (certificados), 3 para tarjetas (proyectos/tecnologías).
+- **Columnas editoriales:** `lg:grid-cols-[0.9fr_1.1fr]` (Conóceme), `sm:grid-cols-[11rem_1fr]` (timeline).
+- **Medida de texto:** `max-w-md` / `max-w-xl` / `max-w-2xl`.
+
+No centres todo: por defecto, alineación a la izquierda.
 
 ---
 
 ## Breakpoints
 
-Breakpoints por defecto de Tailwind (verificados en el build):
-
-| Nombre | Min-width |
-| ------ | --------- |
-| `sm`   | 640px     |
-| `md`   | 768px     |
-| `lg`   | 1024px    |
-| `xl`   | 1280px    |
-| `2xl`  | 1536px    |
-
-Además hay una media query explícita a `max-width: 640px` en `global.css` para el fondo degradado en móvil.
+Tailwind por defecto: `sm` 640 · `md` 768 · `lg` 1024 · `xl` 1280 · `2xl` 1536.
 
 ---
 
 ## Borders and Radius
 
-- **Grosor de borde:** `1px` por defecto (`border`). No se usan bordes gruesos.
-- **Colores de borde:** `border-ink/8` y `border-ink/10` (neutros), `border-gold-main/20` y `border-violet-main/16` (acento).
+- **Bordes:** solo `border-line` (hairlines) o `border border-line` en superficies/interactivos. Nunca cajas alrededor de contenido informativo.
+- **Grosor:** 1px. Regla de acento puntual: `border-l-2 border-gold-main` (recomendación).
 
-| Token            | Valor    | Clase           | Uso                          |
-| ---------------- | -------- | --------------- | ---------------------------- |
-| `--radius-inner` | `1rem`   | `rounded-inner` | Sub-tarjetas, iconos, inputs |
-| `--radius-card`  | `1.5rem` | `rounded-card`  | Tarjetas de contenido        |
-| `--radius-panel` | `2rem`   | `rounded-panel` | Paneles de sección, hero     |
-| —                | `9999px` | `rounded-full`  | Pills, badges, tags, botones |
+| Token            | Valor     | Clase           | Uso                                        |
+| ---------------- | --------- | --------------- | ------------------------------------------ |
+| `--radius-inner` | `0.5rem`  | `rounded-inner` | Controles, mockups, chips                  |
+| `--radius-card`  | `0.75rem` | `rounded-card`  | Tarjetas (proyectos)                       |
+| `--radius-panel` | `1rem`    | `rounded-panel` | Superficies grandes / overlays (reservado) |
+| —                | `9999px`  | `rounded-full`  | Solo pills de estado reales y puntos       |
 
-No introduzcas radios arbitrarios (`rounded-[1.4rem]`). Usa los tokens anteriores.
+No conviertas botones, tags o filtros en cápsulas.
 
 ---
 
 ## Shadows
 
-Definidas en `@theme`:
+| Token           | Clase         | Uso                                                 |
+| --------------- | ------------- | --------------------------------------------------- |
+| `--shadow-soft` | `shadow-soft` | Mockup del navegador y superficies elevadas mínimas |
+| `--shadow-card` | `shadow-card` | Reservado                                           |
+| `--shadow-lift` | `shadow-lift` | **Solo hover** de tarjetas de proyecto              |
 
-| Token           | Clase         | Uso                                                    |
-| --------------- | ------------- | ------------------------------------------------------ |
-| `--shadow-soft` | `shadow-soft` | Reposo por defecto (paneles, tarjetas, botón primario) |
-| `--shadow-card` | `shadow-card` | Elevación destacada en reposo (hero del hub)           |
-| `--shadow-lift` | `shadow-lift` | Hover/elevación (cards en `hover`, tarjeta destacada)  |
-
-Regla: en reposo usa `shadow-soft`; en hover usa `hover:shadow-lift`. No uses `shadow-sm/lg/xl` de Tailwind ni sombras negras arbitrarias.
+Regla: las secciones y listas **no** llevan sombra. La separación se hace con espacio y hairlines.
 
 ---
 
 ## Components
 
-### Buttons (`src/components/ui/Button.astro`)
+### Buttons (`ui/Button.astro`)
 
-- Renderiza `<a>` si recibe `href` (abre en `_blank` por defecto) o `<button>` si no.
-- **Variantes:** `primary` (dorado, CTA principal), `secondary` (borde neutro), `ghost` (borde/acento dorado).
-- **Tamaños:** `sm` (`px-4 py-2 text-sm`), `md` (`px-5 py-3 sm:px-6`), `lg` (ancho completo).
-- Estados: hover (`hover:-translate-y-0.5` + cambio de fondo), `focus-visible` (heredado del navegador + Tailwind), `disabled` (pendiente, ver deuda).
+- `<a>` con `href`; `<button>` sin él.
+- **primary:** `rounded-md bg-gold-main text-ink hover:bg-gold-soft` (una sola acción primaria por área).
+- **secondary:** `rounded-md border border-line hover:bg-surface-muted`.
+- **ghost:** enlace de texto (`text-violet-deep hover:text-gold-main`), para acciones secundarias ("Ver código", "Ver carta…").
+- Tamaños `sm` / `md`. Sin `rounded-full`, sin sombra, sin `translate` en hover.
 
 ### Inputs and Forms
 
-**No hay formularios todavía.** Cuando se añadan:
-
-- Usa `rounded-inner`, `border-ink/10`, `bg-surface`, foco con `ring-gold-main/40`.
-- `label` siempre visible y asociado; mensajes de error con `--color-error`.
+No hay formularios. Cuando se añadan: `rounded-inner`, `border-line`, `bg-surface`, foco `ring-gold-main/40`, errores con `--color-error`, labels asociados.
 
 ### Cards
 
-- Radio `rounded-card`, fondo `bg-paper/80`–`bg-surface/90`, borde `border-ink/8`, sombra `shadow-soft`.
-- Hover: `hover:-translate-y-0.5 hover:shadow-lift` (+ acento en el borde).
-- Padding `p-4 sm:p-5`/`p-4 sm:p-6`.
+**Solo para entidades independientes e interactivas** (proyectos). `rounded-card`, `border-line`, `bg-surface`, sin sombra en reposo, `hover:shadow-lift` + `-translate-y-1`. El contenido interno **no** se envuelve en más cajas.
 
 ### Tables
 
-**No implementadas.** Si se necesitan: cabecera `text-xs uppercase tracking-wide text-ink/55`, filas con `border-b border-ink/8`, alineación numérica a la derecha, comportamiento responsive (scroll horizontal o cards en móvil).
+No implementadas. Para datos: listas/‌filas con `border-line`, cabecera en `text-xs uppercase text-ink-muted`, números alineados a la derecha, scroll horizontal o cards solo en móvil.
 
 ### Navigation
 
-- **Hub (`PortfolioHub.astro`):** botones de sección + paneles (`view-panel`); la lógica vive en `src/utils/viewTransitions.ts`.
-- Estado activo con `aria-pressed` y subrayado (`menu-option-line`).
-- Barra fija con la sección activa (`#active-section-label`).
-- Volver a pulsar la sección activa cierra el panel.
-- No hay sidebar ni breadcrumbs.
+- **Hub:** botones de texto; estado activo vía `aria-pressed` + subrayado dorado (CSS en `global.css`). Pulsar de nuevo la sección activa la cierra.
+- Barra fija discreta con la sección activa.
+- Sin navbar/sidebar/breadcrumbs.
 
 ### Modals and Dialogs
 
-**No implementados.** Si se añaden: overlay `bg-ink/40 backdrop-blur-sm`, panel `rounded-panel shadow-lift`, foco atrapado y cierre con `Esc`.
+No implementados. Reservado: overlay `bg-ink/40 backdrop-blur-sm`, panel `rounded-panel shadow-lift`, foco atrapado, cierre con `Esc`.
 
 ### Alerts and Notifications
 
-**No implementadas.** Reserva los tokens `--color-success/warning/error/info`. Patrón sugerido: fondo `bg-<token>/10`, borde `border-<token>/30`, texto `text-ink`.
+No implementadas. Reserva `--color-success/warning/error/info`.
 
 ---
 
 ## States
 
-| Estado   | Regla                                                                |
-| -------- | -------------------------------------------------------------------- |
-| Default  | `shadow-soft`, borde neutro                                          |
-| Hover    | `-translate-y-0.5` + `hover:shadow-lift` + acento de borde           |
-| Active   | Botones del hub: `aria-pressed="true"` + subrayado                   |
-| Focus    | `focus-visible` (anillo/outline del navegador + utilidades Tailwind) |
-| Disabled | Pendiente de estandarizar (ver deuda)                                |
-| Loading  | No hay UI asíncrona                                                  |
-| Empty    | Certificados muestra un panel informativo si no hay PDFs             |
-| Error    | Tokens reservados; sin patrón implementado                           |
+| Estado   | Regla                                                 |
+| -------- | ----------------------------------------------------- |
+| Default  | Plano: sin sombra, borde `line` si es interactivo     |
+| Hover    | Cambio de color o `hover:shadow-lift` (solo tarjetas) |
+| Active   | `aria-pressed` (hub) / subrayado dorado               |
+| Focus    | `focus-visible:ring-2 ring-gold-main/40`              |
+| Disabled | Pendiente (ver deuda)                                 |
+| Loading  | Sin UI asíncrona                                      |
+| Empty    | Mensaje textual simple                                |
+| Error    | Tokens reservados                                     |
 
 ---
 
 ## Responsive Design
 
-- **Móvil (< 640px):** una columna; certificados en carrusel horizontal (`snap-x`); el fondo usa un degradado más tenue.
-- **Tablet (≥ 640/768px):** grids a 2 columnas.
-- **Escritorio (≥ 1024px):** grids a 3 columnas; cabeceras de sección con intro a la izquierda y badges a la derecha; hero del hub a dos columnas.
+- **Móvil (<640):** una columna; listas a ancho completo; sin scroll horizontal; padding compacto.
+- **Tablet (≥640):** listas a 2 columnas; timeline a 2 columnas (periodo | contenido).
+- **Escritorio (≥1024):** cabecera de sección a 2 columnas (título | descripción + meta); grids a 3 columnas.
 
 ---
 
 ## Accessibility
 
-- Contraste alto sobre fondos claros (texto `ink` sobre `paper`/`surface`). Evita combinar `gold-soft` como texto sobre blanco.
-- **Focus visible** obligatorio en elementos interactivos.
-- `aria-pressed` en los botones de sección; `aria-live="polite"` en el stage; `aria-hidden` en el stage cerrado y en decoración.
-- Navegación completa por teclado (son `<button>`/`<a>` reales).
-- Tamaños de interacción: botones con `py-2`–`py-3`; evita objetivos menores a ~40px.
-- `prefers-reduced-motion`: se anulan animaciones y `scroll-behavior`.
+- Contraste: `ink`/`ink-soft` sobre `paper`; no usar dorado claro como texto pequeño.
+- `focus-visible` obligatorio en interactivos.
+- Navegación por teclado (elementos nativos).
+- `prefers-reduced-motion` desactiva animaciones.
+- Objetivos táctiles ≥ ~40px (`py-2`+).
+- `aria-pressed` en el hub, `aria-live`/`aria-hidden` en el stage.
 
 ---
 
 ## Icons
 
-- **Librería:** ninguna externa. Set propio centralizado en `src/components/ui/Icon.astro`.
-- **Stroke:** `viewBox="0 0 24 24"`, `stroke-width` por defecto `1.7`, `stroke-linecap/linejoin="round"`.
-- **Fill (marcas/social):** `viewBox="0 0 20 20"`, `fill="currentColor"`.
-- **Tamaños habituales:** `h-4 w-4`, `h-5 w-5` (por defecto), `h-6 w-6`, `h-7 w-7`.
-- **Regla:** nunca añadas SVG inline en una sección; amplía `Icon.astro`.
+- Set propio en `ui/Icon.astro`. Sin librerías externas ni SVG inline.
+- **Stroke:** `viewBox 0 0 24 24`, `stroke-width 1.7`, extremes redondeados.
+- **Fill:** marcas/social, `viewBox 0 0 20 20`.
+- Tamaños: `h-4 w-4` (acciones), `h-5 w-5` (filas), `h-6 w-6` (raro).
+- Un icono debe **aportar significado o acción**; nunca dentro de un cuadrado de color decorativo.
 
 ---
 
 ## Animations
 
-- **Transiciones permitidas:** `transition` con duración `150–500ms` (uso común `duration-200` / `duration-300`).
-- **Easing:** por defecto `ease`/linear; la entrada usa `cubic-bezier(0.22, 1, 0.36, 1)`.
-- **Animaciones definidas:**
-  - `fadeIn` — entrada de panel (`280ms`).
-  - `riseIn` — aparición al hacer scroll (`0.6s`, vía `[data-reveal].is-visible`).
-  - `floatSlow` y `marquee` — decorativas; `pulseDot` — marcador "actual".
-- **Escalonado:** se aplica `animation-delay` inline en listas (único uso aceptado de estilos inline).
-- **Evitar:** animaciones largas, giros/zooms agresivos, movimiento que ignore `prefers-reduced-motion`.
+- Transiciones de `0.15s` (color) a `0.3s` (elevación). Rápidas y discretas.
+- `fadeIn` (paneles, 280ms), `riseIn` (reveal al scroll, 0.5s), `pulseDot` (marcador "Actual").
+- Escalonado con `animation-delay` inline (único estilo inline permitido).
+- Evitar animaciones largas, `float`, `marquee`, gradientes animados y cualquier cosa que ignore `prefers-reduced-motion`.
 
 ---
 
-## Component Reuse
+## Reuse first
 
-Antes de crear algo nuevo, reutiliza:
-
-| Necesidad                   | Componente              |
-| --------------------------- | ----------------------- |
-| Panel de sección + cabecera | `ui/SectionShell.astro` |
-| Encabezado de sección       | `ui/SectionIntro.astro` |
-| Pills de meta/estado        | `ui/Badge.astro`        |
-| Chips (tecnologías, stack)  | `ui/Tag.astro`          |
-| Botones y enlaces de acción | `ui/Button.astro`       |
-| Iconos                      | `ui/Icon.astro`         |
+| Necesidad                           | Componente              |
+| ----------------------------------- | ----------------------- |
+| Sección (cabecera + cuerpo + ritmo) | `ui/SectionShell.astro` |
+| Cabecera de sección                 | `ui/SectionIntro.astro` |
+| Acción                              | `ui/Button.astro`       |
+| Estado (pill)                       | `ui/Badge.astro`        |
+| Chip de tecnología/stack            | `ui/Tag.astro`          |
+| Icono                               | `ui/Icon.astro`         |
 
 ---
 
-## Do
+# Avoiding generic AI UI
 
-- ✅ Usa tokens (`rounded-panel`, `shadow-soft`, colores del tema).
-- ✅ Reutiliza `SectionShell` para nuevas secciones con el patrón panel + cabecera.
-- ✅ Centraliza nuevos iconos en `Icon.astro`.
-- ✅ Mantén mobile-first y `prefers-reduced-motion`.
-- ✅ Apoya los textos en `aria-*` cuando aporten contexto.
+Patrones que agentes (y humanos) **deben evitar** en este proyecto:
 
-## Don't
-
-- ❌ Introducir colores/radios/sombras nuevos sin motivo.
-- ❌ Duplicar el patrón `<section><div class="rounded-panel …">` a mano (usa `SectionShell`).
-- ❌ Pegar SVG inline en secciones.
-- ❌ Usar `shadow-sm/lg/xl` o sombras negras arbitrarias.
-- ❌ Escribir contenido en los componentes en lugar de `portfolio.ts`.
-- ❌ Añadir estilos inline salvo `animation-delay`.
+- **Do not wrap every section in a card.** Las secciones son abiertas (`SectionShell`).
+- **Do not create cards inside cards.** El contenido interno va sin caja.
+- **Do not use large rounded rectangles as the default layout primitive.**
+- **Do not add decorative gradients** (ni grid patterns, ni blobs, ni marquees) sin propósito.
+- **Do not use badges/pills for ordinary text.** Un pill implica estado real.
+- **Do not add icons to every heading**, ni iconos dentro de cuadrados de color decorativos.
+- **Do not use shadows to separate normal page sections.** Usa espacio y hairlines.
+- **Prefer whitespace, typography and alignment over containers.**
+- **Prefer structured lists and rows** (servicios, certificados, contacto) sobre grids de cards.
+- **Use accent colors sparingly.** Neutro por defecto; un acento por pantalla.
+- **Preserve strong information hierarchy.** Metadata ≠ título ≠ cuerpo.
+- **Do not make every button the same weight**, ni cápsulas para todo.
+- **Do not center everything.** Alineación izquierda por defecto.
 
 ---
 
 ## Existing Design Debt
 
-Inconsistencias pendientes (documentadas, no corregidas ahora):
-
-1. **Tamaños de texto arbitrarios** en etiquetas pequeñas (`text-[0.62rem]`, `text-[0.66rem]`, `text-[0.72rem]`). Convendría crear tokens de tamaño (`--text-2xs`…) o usar `text-xs`.
-2. **Barra de contacto** (`ContactSection`): las tarjetas de canal son `<a>` con estilos propios en lugar de un componente (`CardLink`); los iconos de marca usan colores hex puntuales para LinkedIn/WhatsApp/GitHub.
-3. **Botones de servicio** se estiran al ancho de la tarjeta por el `align-items: stretch` del contenedor flex (comportamiento actual intencionado pero a revisar).
-4. **Sin estados `disabled`/`loading`** estandarizados en `Button`.
-5. **Forms, tablas, modales y alerts** no existen todavía; se han reservado tokens y pautas, pero no hay componentes.
-6. **Hub hero** conserva medidas/animaciones propias (tamaño del nombre, `min-h-[…]`) que no siguen del todo la escala tipográfica.
-7. **`BackgroundGlow`** usa posiciones/tamaños arbitrarios decorativos (asumible).
+1. **Sin estados `disabled`/`loading`** en `Button`.
+2. **Forms, tablas, modales y alerts** no existen (tokens reservados).
+3. **`--radius-panel`** queda reservado (overlays futuros), hoy sin uso.
+4. El **mockup de proyecto** es CSS decorativo; podría sustituirse por capturas reales.
+5. **Hub hero** conserva `min-h-[calc(100vh-2rem)]` y `clamp()` propios del nombre.

@@ -1,7 +1,6 @@
 ---
 import { services } from '../../../data/portfolio';
 import type { Service } from '../../../data/portfolio';
-import Badge from '../../ui/Badge.astro';
 import Button from '../../ui/Button.astro';
 import Icon from '../../ui/Icon.astro';
 import SectionShell from '../../ui/SectionShell.astro';
@@ -13,57 +12,38 @@ const featuredServices = services.filter((service) => service.featured).length;
 	id="servicios"
 	index="03"
 	kicker="Servicios"
-	title="Servicios enfocados en presencia y producto"
+	title="En qué puedo ayudarte"
 	description="Cuatro enfoques según lo que necesitas ahora: desde lanzar tu primera web hasta refinar un producto que ya existe."
+	meta={[`${services.length} servicios`, `${featuredServices} destacados`]}
 >
-	<Badge slot="badges" variant="gold">
-		{services.length} servicios
-	</Badge>
-	<Badge slot="badges" variant="violet">
-		{featuredServices} destacados
-	</Badge>
-
-	<div class="grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-12">
+	<ul class="border-t border-line">
 		{services.map((service: Service, index: number) => {
 			const whatsappMessage = `${service.inquiry} [Servicio: ${service.title}]`;
 
 			return (
-				<article
-					class:list={[
-						'relative flex h-full flex-col overflow-hidden rounded-card border p-4 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-gold-main/30 hover:shadow-lift sm:p-5',
-						index === 0 ? 'sm:col-span-2 lg:col-span-7' : index === 1 ? 'sm:col-span-2 lg:col-span-5' : 'lg:col-span-6',
-						service.featured
-							? 'border-gold-main/20 bg-linear-to-br from-gold-main/12 via-surface/95 to-violet-soft/18'
-							: 'border-ink/8 bg-paper/88',
-					]}
+				<li
+					class="grid gap-x-12 gap-y-3 border-b border-line py-9 sm:grid-cols-[2.5rem_1fr_auto] sm:items-baseline"
 					data-reveal
-					style={`animation-delay:${index * 70}ms`}
+					style={`animation-delay:${index * 60}ms`}
 				>
-					<span aria-hidden="true" class="pointer-events-none absolute -right-1 -top-4 font-serif text-7xl leading-none text-gold-main/10">
+					<span class="font-serif text-sm text-gold-main" aria-hidden="true">
 						{String(index + 1).padStart(2, '0')}
 					</span>
-					<div class="relative flex items-start justify-between gap-4">
-						<div class="flex h-12 w-12 items-center justify-center rounded-inner border border-gold-main/20 bg-gold-main/10 text-gold-soft">
-							<Icon name={service.icon} class="h-6 w-6" />
+
+					<div>
+						<div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+							<h3 class="font-serif text-xl text-ink sm:text-2xl">{service.title}</h3>
+							{service.featured && <span class="text-xs uppercase tracking-[0.16em] text-gold-main">Más solicitado</span>}
 						</div>
-						<Badge variant={service.featured ? 'gold' : 'neutral'} size="sm">
-							{service.featured ? 'Más solicitado' : 'Servicio'}
-						</Badge>
+						<p class="mt-2 max-w-xl text-sm leading-6 text-ink-soft sm:text-base sm:leading-7">{service.description}</p>
 					</div>
 
-					<div class="mb-3.5 mt-4 h-2 w-14 rounded-full bg-linear-to-r from-gold-main to-violet-soft"></div>
-					<h3 class="text-lg font-semibold text-ink sm:text-xl">{service.title}</h3>
-					<p class="mt-2.5 text-sm leading-6 text-ink/70 sm:mt-3 sm:text-base sm:leading-7">{service.description}</p>
-
-					<Button
-						href={`https://wa.me/34628230716?text=${encodeURIComponent(whatsappMessage)}`}
-						variant="secondary"
-						class="mt-4 w-full sm:mt-5 sm:w-auto"
-					>
+					<Button href={`https://wa.me/34628230716?text=${encodeURIComponent(whatsappMessage)}`} variant="ghost" class="sm:pt-1">
 						{service.cta}
+						<Icon name="arrowRight" class="h-4 w-4" strokeWidth={1.6} />
 					</Button>
-				</article>
+				</li>
 			);
 		})}
-	</div>
+	</ul>
 </SectionShell>

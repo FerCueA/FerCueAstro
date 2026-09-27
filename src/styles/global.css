@@ -1,44 +1,45 @@
 @import 'tailwindcss';
 
 @theme {
-	/* Colors */
-	--color-ink: #1f2433;
-	--color-violet-deep: #5f4b78;
+	/* Colors — neutral base, color used with intention */
+	--color-ink: #1f2433; /* text primary */
+	--color-ink-soft: #454b5c; /* text secondary */
+	--color-ink-muted: #737a8a; /* text muted / metadata */
+	--color-paper: #f7f3eb; /* page background */
+	--color-surface: #fffdf9; /* raised surface */
+	--color-surface-muted: #efe9df; /* subtle secondary surface */
+	--color-line: rgba(31, 36, 51, 0.12); /* hairlines & borders */
+	--color-gold-main: #c08a2e; /* primary accent */
+	--color-gold-soft: #e6d3a8;
+	--color-violet-deep: #56446a; /* secondary accent */
 	--color-violet-main: #8c6f9d;
-	--color-violet-soft: #dccfe4;
-	--color-gold-main: #c99b45;
-	--color-gold-soft: #ecd9aa;
-	--color-paper: #f7f3eb;
-	--color-surface: #fffaf2;
+	--color-violet-soft: #e5dced;
 
-	/* Feedback colors (reserved, documented in DESIGN.md) */
+	/* Feedback */
 	--color-success: #3f8f5f;
 	--color-warning: #c98a2b;
-	--color-error: #c2493f;
+	--color-error: #bf4a3f;
 	--color-info: #4b6fb0;
 
 	/* Typography */
 	--font-sans: 'Space Grotesk', sans-serif;
 	--font-serif: 'Fraunces', serif;
 
-	/* Radius scale */
-	--radius-inner: 1rem;
-	--radius-card: 1.5rem;
-	--radius-panel: 2rem;
+	/* Radius — small, coherent scale */
+	--radius-inner: 0.5rem;
+	--radius-card: 0.75rem;
+	--radius-panel: 1rem;
 
-	/* Elevation */
-	--shadow-soft: 0 1px 2px rgba(17, 20, 35, 0.05);
-	--shadow-card: 0 10px 24px rgba(17, 20, 35, 0.07);
-	--shadow-lift: 0 20px 46px rgba(17, 20, 35, 0.09);
+	/* Elevation — used only for real elevation */
+	--shadow-soft: 0 1px 2px rgba(31, 36, 51, 0.04);
+	--shadow-card: 0 1px 3px rgba(31, 36, 51, 0.06);
+	--shadow-lift: 0 10px 30px rgba(31, 36, 51, 0.09);
 }
 
 :root {
 	color-scheme: light;
-	background:
-		radial-gradient(circle at top left, rgba(201, 155, 69, 0.12), transparent 26%),
-		radial-gradient(circle at 82% 16%, rgba(140, 111, 157, 0.16), transparent 28%),
-		linear-gradient(180deg, #fbf7f0 0%, #f6efe5 54%, #f3eadf 100%);
-	background-color: #f7f3eb;
+	background-color: var(--color-paper);
+	background-image: radial-gradient(circle at 85% -10%, rgba(140, 111, 157, 0.09), transparent 42%);
 	font-family: 'Space Grotesk', sans-serif;
 	scroll-behavior: smooth;
 }
@@ -51,6 +52,65 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+/* Headings use the serif display face with balanced wrapping */
+h1,
+h2,
+h3 {
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+::selection {
+	background: rgba(192, 138, 46, 0.22);
+	color: #1f2433;
+}
+
+/* --- Hub navigation --- */
+.menu-option {
+	color: var(--color-ink-muted);
+	transition: color 0.15s ease;
+}
+
+.menu-option:hover {
+	color: var(--color-ink);
+}
+
+.menu-option[aria-pressed='true'] {
+	color: var(--color-ink);
+}
+
+.menu-option-line {
+	transform: scaleX(0);
+	transition: transform 0.2s ease;
+}
+
+.menu-option[aria-pressed='true'] .menu-option-line {
+	transform: scaleX(1);
+}
+
+/* --- Certificate filters --- */
+.certificate-filter {
+	color: var(--color-ink-muted);
+	border-bottom: 1px solid transparent;
+	padding-bottom: 2px;
+	transition:
+		color 0.15s ease,
+		border-color 0.15s ease;
+}
+
+.certificate-filter:hover {
+	color: var(--color-ink);
+}
+
+.certificate-filter.is-active {
+	color: var(--color-ink);
+	border-bottom-color: var(--color-gold-main);
+}
+
+/* --- Panel fade-in --- */
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -62,13 +122,41 @@ body {
 	}
 }
 
-@media (max-width: 640px) {
-	:root {
-		background:
-			radial-gradient(circle at top left, rgba(201, 155, 69, 0.08), transparent 22%),
-			radial-gradient(circle at 82% 16%, rgba(140, 111, 157, 0.1), transparent 24%),
-			linear-gradient(180deg, #fbf7f0 0%, #f6efe5 58%, #f3eadf 100%);
+/* --- Reveal on scroll --- */
+@keyframes riseIn {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
 	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.js [data-reveal] {
+	opacity: 0;
+	transform: translateY(14px);
+}
+
+.js [data-reveal].is-visible {
+	animation: riseIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pulseDot {
+	0% {
+		box-shadow: 0 0 0 0 rgba(192, 138, 46, 0.5);
+	}
+	70% {
+		box-shadow: 0 0 0 8px rgba(192, 138, 46, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(192, 138, 46, 0);
+	}
+}
+
+.animate-pulse-dot {
+	animation: pulseDot 2.4s cubic-bezier(0.66, 0, 0, 1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -83,92 +171,7 @@ body {
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.01ms !important;
 	}
-}
 
-::selection {
-	background: rgba(201, 155, 69, 0.24);
-	color: #1f2433;
-}
-
-/* --- Reveal on scroll --- */
-@keyframes riseIn {
-	from {
-		opacity: 0;
-		transform: translateY(18px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-.js [data-reveal] {
-	opacity: 0;
-	transform: translateY(18px);
-}
-
-.js [data-reveal].is-visible {
-	animation: riseIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* --- Decorative helpers --- */
-.text-gradient {
-	background-image: linear-gradient(120deg, var(--color-violet-deep), var(--color-gold-main) 55%, var(--color-violet-main));
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
-}
-
-.grid-pattern {
-	background-image:
-		linear-gradient(rgba(31, 36, 51, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(31, 36, 51, 0.05) 1px, transparent 1px);
-	background-size: 34px 34px;
-}
-
-@keyframes floatSlow {
-	0%,
-	100% {
-		transform: translateY(0);
-	}
-	50% {
-		transform: translateY(-10px);
-	}
-}
-
-.animate-float-slow {
-	animation: floatSlow 7s ease-in-out infinite;
-}
-
-@keyframes marquee {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		transform: translateX(-50%);
-	}
-}
-
-.animate-marquee {
-	animation: marquee 32s linear infinite;
-}
-
-@keyframes pulseDot {
-	0% {
-		box-shadow: 0 0 0 0 rgba(201, 155, 69, 0.55);
-	}
-	70% {
-		box-shadow: 0 0 0 10px rgba(201, 155, 69, 0);
-	}
-	100% {
-		box-shadow: 0 0 0 0 rgba(201, 155, 69, 0);
-	}
-}
-
-.animate-pulse-dot {
-	animation: pulseDot 2.2s cubic-bezier(0.66, 0, 0, 1) infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
 	.js [data-reveal] {
 		opacity: 1;
 		transform: none;

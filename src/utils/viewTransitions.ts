@@ -57,14 +57,8 @@ export function initializeViewState(): ViewState {
  * Update a menu button's visual state (active/inactive)
  */
 export function setMenuButtonState(button: HTMLButtonElement, selected: boolean): void {
-	const line = button.querySelector<HTMLElement>('.menu-option-line');
+	// Styling is driven by CSS through `aria-pressed`, so we don't toggle classes.
 	button.setAttribute('aria-pressed', selected ? 'true' : 'false');
-	button.classList.toggle('text-ink/95', selected);
-	button.classList.toggle('font-bold', selected);
-	if (line) {
-		line.classList.toggle('scale-x-100', selected);
-		line.classList.toggle('scale-x-0', !selected);
-	}
 }
 
 /**

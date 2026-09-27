@@ -45,7 +45,6 @@ Do not reorganize unrelated parts of the repository without a clear maintainabil
 - `src/components/ui/` — componentes base reutilizables (`Button`, `Badge`, `Tag`, `Icon`, `SectionIntro`, `SectionShell`).
 - `src/components/sections/<dominio>/` — secciones por dominio (`profile`, `experience`, `work`, `services`, `expertise`, `credentials`, `engagement`).
 - `src/components/front/PortfolioHub.astro` — hub y navegación entre paneles.
-- `src/components/layout/` — elementos de layout global (`BackgroundGlow`).
 - `src/layouts/MainLayout.astro` — layout raíz.
 - `src/pages/index.astro` — única página.
 - `src/styles/global.css` — tokens del design system (`@theme`) y utilidades globales.

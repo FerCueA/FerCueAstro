@@ -24,15 +24,13 @@ src/
 │   │   │   └── CertificatesSection.astro
 │   │   └── engagement/     # Sección de contacto
 │   │       └── ContactSection.astro
-│   ├── ui/                 # Componentes UI reutilizables (design system)
-│   │   ├── Badge.astro
-│   │   ├── Button.astro
-│   │   ├── Icon.astro
-│   │   ├── SectionIntro.astro
-│   │   ├── SectionShell.astro
-│   │   └── Tag.astro
-│   └── layout/             # Componentes de layout global
-│       └── BackgroundGlow.astro
+│   └── ui/                 # Componentes UI reutilizables (design system)
+│       ├── Badge.astro
+│       ├── Button.astro
+│       ├── Icon.astro
+│       ├── SectionIntro.astro
+│       ├── SectionShell.astro
+│       └── Tag.astro
 ├── data/
 │   └── portfolio.ts        # Configuración centralizada
 ├── layouts/
